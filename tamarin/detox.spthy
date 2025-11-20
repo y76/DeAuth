@@ -1,0 +1,79 @@
+theory detox_key_exchange
+begin
+
+builtins: diffie-hellman, symmetric-encryption, signing
+
+equations: 
+  sdec(senc(m, k), k) = m
+
+
+// Register the UB key pair
+// This will be the provisioning stage
+rule Register_UB_pk:
+  [ Fr(~ltk_ub) ]
+  -->
+  [ !Ltk($UB, ~ltk_ub)
+    , !Pk($UB, 'g'^~ltk_ub)
+  ]
+
+// WS Generate Ephemeral key
+rule WS_GenerateEphemeralKey[role="WS"]:
+  [ Fr(~ws_ephem)]
+     --[ WS_GenerateEphemeralKey(~ws_ephem)]-> 
+    [ WS_Ephemeral($WS, ~ws_ephem)]
+
+rule WS_Encrypt_Session_Secret[role="WS"]:
+    let ws_pub = 'g'^~ws_ephem
+    ss = ub_pub^~ws_ephem
+    message = senc(~sts_session_secret,ss)
+    in
+  [ Fr(~sts_session_secret), // this is an opaque blob that contains any data needed to initia te the uwb connection
+    !Pk($UB, ub_pub),
+    WS_Ephemeral($WS, ~ws_ephem) ]
+  --[ WS_Encrypt_Session($WS,$UB,~sts_session_secret) ]->
+  [ WS_Encrypt_Session_Secret(<message, ws_pub>) ] 
+
+rule WS_Send_Session_Secret[role="WS"]:
+  [ WS_Encrypt_Session_Secret(<encrypted, ws_pub>) ] -->
+  [ Out(<encrypted, ws_pub>) ]
+
+rule UB_State1[role="UB"]:
+  [ !Ltk($UB, ~ltk_ub) ] -->
+  [ UB_State1($UB,~ltk_ub) ]
+
+rule UB_Decrypt_Encrypted_Key[role="UB"]:
+    let ss = ws_pub^~ub_ltk
+    sess_sec = sdec(encrypted, ss)
+    in
+  [ UB_State1(UB, ~ub_ltk),
+    In(<encrypted, ws_pub>) ]
+    --[UB_Decrypt_message($WS, UB, sess_sec)]-> 
+    [ ]
+
+// There exists a trace that executes the full protocol
+lemma exist_path_to_decrypted_message:
+  exists-trace
+    "Ex #i #j WS UB secret. 
+    WS_Encrypt_Session(WS, UB, secret) @i 
+    & UB_Decrypt_message(WS,UB,secret) @ #j"
+
+lemma exist_path_to_something:
+  exists-trace
+    "Ex #i WS UB secret. UB_Decrypt_message(WS,UB,secret) @ #i"
+
+// The session secret remains secret throughout the protocol run
+lemma sts_session_secrecy:
+    "All #i #j WS UB secret. 
+    WS_Encrypt_Session(WS, UB, secret) @i 
+        & UB_Decrypt_message(WS,UB,secret) @ #j
+    ==> (not Ex #k. K(secret)@k )"
+
+// There can be no distinct UB which decrypts the same message
+lemma no_fake_devices:
+    "All #i #j WS UB secret. 
+    WS_Encrypt_Session(WS, UB, secret) @i
+        & UB_Decrypt_message(WS,UB,secret) @ #j
+    ==> (not Ex #k UB2.
+        UB_Decrypt_message(WS,UB2,secret)@k
+            & (not UB = UB2))"
+end
