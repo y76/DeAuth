@@ -1,0 +1,13 @@
+[Unit]
+Description=DeAuth Lock - Run on unlock
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env python3 %h/apps/DeAuth/impl/workstation/deauth.py
+Restart=on-failure
+WorkingDirectory=%h/apps/DeAuth/impl/workstation
+
+[Install]
+WantedBy=graphical-session.target
+
