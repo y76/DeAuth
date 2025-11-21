@@ -23,4 +23,3 @@ systemctl --user start "$SERVICE_NAME"
 echo "To check status: systemctl --user status $SERVICE_NAME"
 echo "To stop: systemctl --user stop $SERVICE_NAME"
 echo "To disable: systemctl --user disable $SERVICE_NAME"
-
