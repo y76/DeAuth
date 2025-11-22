@@ -1,0 +1,867 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+#include "esp_log.h"
+#include "nvs_flash.h"
+#include "nimble/nimble_port.h"
+#include "nimble/nimble_port_freertos.h"
+#include "host/ble_hs.h"
+#include "host/util/util.h"
+#include "console/console.h"
+#include "services/gap/ble_svc_gap.h"
+#define CONFIG_EXAMPLE_EXTENDED_ADV 1
+#include <string.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/event_groups.h"
+#include "driver/uart.h"
+#include "driver/gpio.h"
+#include "esp_mac.h"
+#include "esp_wifi.h"
+#include "esp_system.h"
+#include "esp_timer.h"
+#include "esp_sleep.h"
+
+#include "lwip/sockets.h"
+#include "lwip/netdb.h"
+#include "esp_event.h"
+#include "esp_netif.h"
+#include "host/ble_hs_mbuf.h"
+
+static const char *tag = "NimBLE_BLE_PRPH";
+static int bleprph_gap_event(struct ble_gap_event *event, void *arg);
+#if CONFIG_EXAMPLE_RANDOM_ADDR
+static uint8_t own_addr_type = BLE_OWN_ADDR_RANDOM;
+#else
+static uint8_t own_addr_type;
+#endif
+
+#define EVALUATION_CONFIG (0)
+
+void ble_store_config_init(void);
+
+// uart config
+#define ECHO_UART_PORT_NUM (1)
+#define ECHO_UART_BAUD_RATE (115200)
+#define ECHO_TASK_STACK_SIZE (2048)
+
+#define ECHO_TEST_TXD (6)
+#define ECHO_TEST_RXD (7)
+#define ECHO_TEST_RTS (-1)
+#define ECHO_TEST_CTS (-1)
+#define HEADER_BYTES (7)
+#define MSG_END_CHAR "MSGEND"
+#define ACK_END_CHAR "ACKEND"
+#define BRD_END_CHAR "BRDEND"
+#define NSC_END_CHAR "NSCEND"
+
+#define BUF_SIZE (254)
+
+#define MBUF_DATA_SIZE 260 
+
+#define EXAMPLE_ESP_WIFI_SSID "PAISA-AP"
+#define EXAMPLE_ESP_WIFI_PASS "paisapass"
+#define EXAMPLE_ESP_WIFI_CHANNEL 1
+#define EXAMPLE_MAX_STA_CONN 4
+#define ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD WIFI_AUTH_WPA2_PSK
+#define WIFI_CONNECTED_BIT BIT0
+#define WIFI_FAIL_BIT BIT1
+#define RETRY_NUMBER 10
+static EventGroupHandle_t s_wifi_event_group;
+static int s_retry_num = 0;
+static const char *WIFI_TAG = "wifi_connection";
+struct os_mbuf_pool large_mbuf_pool;
+struct os_mempool large_mbuf_mempool;
+static const char *TAG = "HTTP_SERVER";
+
+uint8_t large_mbuf_buffer[OS_MEMPOOL_BYTES(10, MBUF_DATA_SIZE)];
+
+static void wifi_event_handler(void *arg, esp_event_base_t event_base,
+                               int32_t event_id, void *event_data)
+{
+    if (event_id == WIFI_EVENT_AP_STACONNECTED)
+    {
+        wifi_event_ap_staconnected_t *event = (wifi_event_ap_staconnected_t *)event_data;
+        ESP_LOGI(WIFI_TAG, "station " MACSTR " join, AID=%d",
+                 MAC2STR(event->mac), event->aid);
+    }
+    else if (event_id == WIFI_EVENT_AP_STADISCONNECTED)
+    {
+        wifi_event_ap_stadisconnected_t *event = (wifi_event_ap_stadisconnected_t *)event_data;
+        ESP_LOGI(WIFI_TAG, "station " MACSTR " leave, AID=%d",
+                 MAC2STR(event->mac), event->aid);
+    }
+
+    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START)
+    {
+        esp_wifi_connect();
+    }
+    else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED)
+    {
+        if (s_retry_num < RETRY_NUMBER)
+        {
+            esp_wifi_connect();
+            s_retry_num++;
+            ESP_LOGI(WIFI_TAG, "retry to connect to the AP");
+        }
+        else
+        {
+            xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
+        }
+        ESP_LOGI(WIFI_TAG, "connect to the AP fail");
+    }
+    else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP)
+    {
+        ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
+        ESP_LOGI(WIFI_TAG, "got ip:" IPSTR, IP2STR(&event->ip_info.ip));
+        s_retry_num = 0;
+        xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
+    }
+}
+
+void wifi_init(void)
+{
+    s_wifi_event_group = xEventGroupCreate();
+
+    ESP_ERROR_CHECK(esp_netif_init());
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+    esp_netif_create_default_wifi_ap();
+    esp_netif_create_default_wifi_sta();
+
+    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+
+    ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
+
+    esp_event_handler_instance_t instance_any_id;
+    esp_event_handler_instance_t instance_got_ip;
+    ESP_ERROR_CHECK(esp_event_handler_instance_register(WIFI_EVENT,
+                                                        ESP_EVENT_ANY_ID,
+                                                        &wifi_event_handler,
+                                                        NULL,
+                                                        &instance_any_id));
+
+    ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT,
+                                                        IP_EVENT_STA_GOT_IP,
+                                                        &wifi_event_handler,
+                                                        NULL,
+                                                        &instance_got_ip));
+}
+
+void wifi_start_sta(void)
+{
+#define SSID "NETGEAR68"
+#define PASSWORD "icyvalley700"
+
+    xEventGroupClearBits(s_wifi_event_group, WIFI_CONNECTED_BIT | WIFI_FAIL_BIT);
+
+    wifi_config_t wifi_config = {
+        .sta = {
+            .ssid = SSID,
+            .password = PASSWORD,
+            .threshold.authmode = ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD,
+            .sae_pwe_h2e = WPA3_SAE_PWE_BOTH,
+        },
+    };
+    ESP_ERROR_CHECK(esp_wifi_stop());
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
+    ESP_ERROR_CHECK(esp_wifi_start());
+
+    ESP_LOGI(WIFI_TAG, "wifi_init_sta finished.");
+
+    EventBits_t bits = xEventGroupWaitBits(s_wifi_event_group,
+                                           WIFI_CONNECTED_BIT | WIFI_FAIL_BIT,
+                                           pdFALSE,
+                                           pdFALSE,
+                                           portMAX_DELAY);
+
+    if (bits & WIFI_CONNECTED_BIT)
+    {
+        ESP_LOGI(WIFI_TAG, "connected to ap SSID:%s password:%s", SSID, PASSWORD);
+    }
+    else if (bits & WIFI_FAIL_BIT)
+    {
+        ESP_LOGI(WIFI_TAG, "Failed to connect to SSID:%s, password:%s", SSID, PASSWORD);
+    }
+    else
+    {
+        ESP_LOGE(WIFI_TAG, "UNEXPECTED EVENT");
+    }
+}
+
+void udp_connection_w_mfr(uint8_t *data, int len)
+{
+    const char *mfr_ip = "192.168.0.138";
+    const int mfr_port = 10000;
+
+    int sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if (sock < 0)
+    {
+        ESP_LOGE(WIFI_TAG, "Failed to create socket: errno %d", errno);
+        return;
+    }
+
+    struct timeval timeout;
+    timeout.tv_sec = 5;
+    timeout.tv_usec = 0;
+    setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
+
+    struct sockaddr_in dest_addr;
+    dest_addr.sin_addr.s_addr = inet_addr(mfr_ip);
+    dest_addr.sin_family = AF_INET;
+    dest_addr.sin_port = htons(mfr_port);
+
+    int err = sendto(sock, data, len, 0, (struct sockaddr *)&dest_addr, sizeof(dest_addr));
+    if (err < 0)
+    {
+        ESP_LOGE(WIFI_TAG, "Failed to send UDP packet: errno %d", errno);
+    }
+
+    socklen_t fromlen = 0;
+    int cnt = 0;
+    for (cnt = 0; cnt < RETRY_NUMBER; cnt++)
+    {
+        len = recvfrom(sock, data, BUF_SIZE, 0, (struct sockaddr *)&dest_addr, &fromlen);
+        if (len > 0)
+        {
+            ESP_LOGI(WIFI_TAG, "Received %d bytes", len);
+            break;
+        }
+    }
+
+    if (cnt == RETRY_NUMBER)
+    {
+        ESP_LOGE(WIFI_TAG, "Failed to receive UDP packet: errno %d", errno);
+        close(sock);
+        return;
+    }
+
+ESP_LOGI(tag, "Sending UART data (length: %d)", len);
+printf("Hex: ");
+for(int i = 0; i < len; i++) {
+    printf("%02X ", data[i]);
+}
+printf("\nASCII: ");
+for(int i = 0; i < len; i++) {
+    if(data[i] >= 32 && data[i] <= 126) { 
+        printf("%c", data[i]);
+    } else {
+        printf(".");
+    }
+}
+printf("\n");
+
+    uart_write_bytes(ECHO_UART_PORT_NUM, (const char *)data, len);
+
+    while (1)
+    {
+        int len = uart_read_bytes(ECHO_UART_PORT_NUM, data, (BUF_SIZE - 1), 20 / portTICK_PERIOD_MS);
+        if (len > 0 && (strncmp((const char *)data + len - 6, "ACKEND", 6) == 0))
+        {
+            err = sendto(sock, data, len, 0, (struct sockaddr *)&dest_addr, sizeof(dest_addr));
+            if (err < 0)
+            {
+                ESP_LOGE(WIFI_TAG, "Failed to send UDP packet: errno %d", errno);
+            }
+            break;
+        }
+    }
+
+    close(sock);
+}
+
+void init_large_mbuf_pool(void)
+{
+    int rc;
+
+    rc = os_mempool_init(
+        &large_mbuf_mempool,
+        10,
+        MBUF_DATA_SIZE,
+        large_mbuf_buffer,
+        "large_mbuf_mempool");
+    assert(rc == 0);
+
+    rc = os_mbuf_pool_init(
+        &large_mbuf_pool,
+        &large_mbuf_mempool,
+        MBUF_DATA_SIZE,
+        10);
+    assert(rc == 0);
+}
+
+// beacon config
+uint8_t beacon_raw[BUF_SIZE] = {
+    0x00, 0x50, 0x41, 0x49, 0x53, 0x41,
+    0x80, 0x00,
+    0x00, 0x00,
+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+    0x7c, 0xdf, 0xa1, 0xbc, 0x45, 0x74,
+    0x7c, 0xdf, 0xa1, 0xbc, 0x45, 0x74,
+    0xe0, 0x01,
+    0x5c, 0x35, 0x2a, 0x00, 0x00, 0x00, 0x00, 0x00, // Timestamp
+    0x64, 0x00,
+    0x31, 0x04,
+    0x00, 0x05, 0x50, 0x41, 0x49, 0x53, 0x41, // SSID: DB-PAISA
+    0x01, 0x08, 0x8b, 0x96, 0x82, 0x84, 0x0c, 0x18, 0x30, 0x60,
+    0x03, 0x01, 0x01,
+    0x05, 0x06, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00,
+    0xdd, 0x0b, 0x00, 0x14, 0x6c, 0x08, // Initial Length: 75 bytes
+};
+uint8_t beacon_raw_size = 70;
+uint8_t beacon_raw_ascii[155];
+uint8_t instance;
+
+static void ext_bleprph_advertise_init(void)
+{
+    struct ble_gap_ext_adv_params params;
+    instance = 0;
+    int rc;
+
+    if (ble_gap_ext_adv_active(instance))
+    {
+        rc = ble_gap_ext_adv_stop(instance);
+        assert(rc == 0);
+    }
+
+    memset(&params, 0, sizeof(params));
+
+    params.connectable = 0;
+    params.scannable = 0;
+    params.legacy_pdu = 0;
+
+    params.own_addr_type = BLE_OWN_ADDR_PUBLIC;
+
+    params.primary_phy = BLE_HCI_LE_PHY_1M;
+    params.secondary_phy = BLE_HCI_LE_PHY_2M;
+    params.sid = 1;
+
+    params.itvl_min = BLE_GAP_ADV_FAST_INTERVAL1_MIN;
+    params.itvl_max = BLE_GAP_ADV_FAST_INTERVAL1_MIN;
+
+    rc = ble_gap_ext_adv_configure(instance, &params, NULL,
+                                   bleprph_gap_event, NULL);
+    assert(rc == 0);
+}
+
+static void ext_bleprph_advertise(const uint8_t *r_msg, int msglen)
+{
+    struct os_mbuf *data;
+    int rc;
+    const char *loc_paisa = "LOC-PAISA";
+    int loc_paisa_len = strlen(loc_paisa);
+
+    int payload_len = msglen;
+
+    printf("UART data (first %d bytes): ", payload_len);
+    for (int i = 0; i < payload_len; i++)
+    {
+        printf("%02X ", r_msg[i]);
+    }
+    printf("\n");
+
+    uint8_t total_adv_length = 3 + 2 + 2 + loc_paisa_len + payload_len;
+    uint8_t *adv_data = malloc(total_adv_length);
+    if (adv_data == NULL)
+    {
+        printf("Memory allocation failed!\n");
+        return;
+    }
+
+    adv_data[0] = 0x02; // Length of flags field
+    adv_data[1] = 0x01; // Flags data type
+    adv_data[2] = 0x06; // Flags value
+
+    adv_data[3] = payload_len + loc_paisa_len + 3; 
+    adv_data[4] = 0xFF;                            // Manufacturer specific data type
+    adv_data[5] = 0xE5;                            // Company ID (LSB)
+    adv_data[6] = 0x02;                            // Company ID (MSB)
+
+    memcpy(&adv_data[7], loc_paisa, loc_paisa_len);
+
+    memcpy(&adv_data[7 + loc_paisa_len], r_msg, payload_len);
+
+    printf("Final advertisement packet (%d bytes): ", total_adv_length);
+    for (int i = 0; i < total_adv_length; i++)
+    {
+        printf("%02X ", adv_data[i]);
+    }
+    printf("\n");
+
+    ble_gap_ext_adv_stop(instance);
+
+    data = os_mbuf_get_pkthdr(&large_mbuf_pool, 0);
+    if (!data)
+    {
+        printf("Failed to allocate mbuf!\n");
+        free(adv_data);
+        return;
+    }
+
+    rc = os_mbuf_append(data, adv_data, total_adv_length);
+    if (rc != 0)
+    {
+        printf("Failed to append to mbuf! rc=%d\n", rc);
+        free(adv_data);
+        return;
+    }
+
+    rc = ble_gap_ext_adv_set_data(instance, data);
+    if (rc != 0)
+    {
+        printf("Failed to set advertisement data! rc=%d\n", rc);
+        free(adv_data);
+        return;
+    }
+
+    rc = ble_gap_ext_adv_start(instance, 0, 0);
+    if (rc != 0)
+    {
+        printf("Failed to start advertising! rc=%d\n", rc);
+        free(adv_data);
+        return;
+    }
+
+    free(adv_data);
+    printf("Advertisement started successfully\n");
+}
+static void
+ble_scan(void)
+{
+    uint8_t own_addr_type;
+    struct ble_gap_disc_params disc_params;
+    int rc;
+    ble_gap_disc_cancel();
+    rc = ble_hs_id_infer_auto(0, &own_addr_type);
+    if (rc != 0)
+    {
+        MODLOG_DFLT(ERROR, "error determining address type; rc=%d\n", rc);
+        return;
+    }
+
+    disc_params.filter_duplicates = 1;
+
+    disc_params.passive = 1;
+
+    disc_params.itvl = 0;
+    disc_params.window = 0;
+    disc_params.filter_policy = 0;
+    disc_params.limited = 0;
+
+    rc = ble_gap_disc(own_addr_type, BLE_HS_FOREVER, &disc_params,
+                      bleprph_gap_event, NULL);
+    if (rc != 0)
+    {
+        MODLOG_DFLT(ERROR, "Error initiating GAP discovery procedure; rc=%d\n",
+                    rc);
+    }
+}
+
+static void
+bleprph_on_reset(int reason)
+{
+    MODLOG_DFLT(ERROR, "Resetting state; reason=%d\n", reason);
+}
+
+static void
+ble_app_set_addr(void)
+{
+    ble_addr_t addr;
+    int rc;
+
+    rc = ble_hs_id_gen_rnd(0, &addr);
+    assert(rc == 0);
+
+    rc = ble_hs_id_set_rnd(addr.val);
+
+    assert(rc == 0);
+}
+
+static void
+bleprph_on_sync(void)
+{
+    int rc;
+
+#if CONFIG_EXAMPLE_RANDOM_ADDR
+    ble_app_set_addr();
+#endif
+
+#if CONFIG_EXAMPLE_RANDOM_ADDR
+    rc = ble_hs_util_ensure_addr(1);
+#else
+    rc = ble_hs_util_ensure_addr(0);
+#endif
+    assert(rc == 0);
+
+    rc = ble_hs_id_infer_auto(0, &own_addr_type);
+    if (rc != 0)
+    {
+        MODLOG_DFLT(ERROR, "error determining address type; rc=%d\n", rc);
+        return;
+    }
+
+    uint8_t addr_val[6] = {0};
+    rc = ble_hs_id_copy_addr(own_addr_type, addr_val, NULL);
+
+    MODLOG_DFLT(INFO, "Device Address: ");
+    MODLOG_DFLT(INFO, "\n");
+
+    ext_bleprph_advertise_init();
+    ble_scan();
+}
+
+void bleprph_host_task(void *param)
+{
+    ESP_LOGD(tag, "BLE Host Task Started");
+    nimble_port_run();
+
+    nimble_port_freertos_deinit();
+}
+
+bool contains_DB_PAISA(const uint8_t *data, size_t data_length)
+{
+    uint8_t db_paisa_id[] = {0x44, 0x50, 0x2d, 0x52, 0x45, 0x51};
+    if (data_length < sizeof(db_paisa_id))
+    {
+        return false;
+    }
+
+    for (size_t i = 0; i <= data_length - sizeof(db_paisa_id); ++i)
+    {
+        if (memcmp(data + i, db_paisa_id, sizeof(db_paisa_id)) == 0)
+        {
+            return true; 
+        }
+    }
+    return false; 
+}
+
+bool contains_DEAUTH(const uint8_t *data, size_t data_length)
+{
+    const char *loc_resp = "-DeAuth-";
+    size_t resp_len = strlen(loc_resp);
+
+    if (data_length < 7 + resp_len)
+    {
+        return false;
+    }
+
+    for (size_t i = 7; i <= data_length - resp_len; ++i)
+    {
+        if (memcmp(data + i, loc_resp, resp_len) == 0)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+static void send_uart_data(const uint8_t *data, uint8_t data_len)
+{
+    const char *start_marker = "PAISASTART:";
+    const char *end_marker = ":PAISAEND";
+    size_t start_marker_len = strlen(start_marker);
+    size_t end_marker_len = strlen(end_marker);
+
+    size_t required_size = start_marker_len + data_len + end_marker_len + 1;
+    
+    if (required_size > BUF_SIZE) {
+        ESP_LOGE(tag, "Data too large for buffer: %d bytes needed, %d available", 
+                 required_size, BUF_SIZE);
+        data_len = BUF_SIZE - start_marker_len - end_marker_len - 1;
+        ESP_LOGW(tag, "Truncating data to %d bytes", data_len);
+    }
+
+    static char buf[BUF_SIZE];
+    memset(buf, 0, BUF_SIZE);
+
+    size_t pos = 0;
+
+    memcpy(buf, start_marker, start_marker_len);
+    pos += start_marker_len;
+
+    if (data && data_len > 0) {
+        memcpy(buf + pos, data, data_len);
+        pos += data_len;
+    }
+
+    memcpy(buf + pos, end_marker, end_marker_len);
+    pos += end_marker_len;
+    
+    buf[pos] = '\0';
+
+    ESP_LOGI(tag, "Sending message (hex): ");
+    for (size_t i = 0; i < pos; i++) {
+        printf("%02X", (unsigned char)buf[i]);
+    }
+    printf("\n");
+    
+    ESP_LOGI(tag, "Sending message (ASCII): ");
+    for (size_t i = 0; i < pos; i++) {  // Only print first part
+        if (buf[i] >= 32 && buf[i] <= 126) {
+            printf("%c", buf[i]);
+        } else {
+            printf(".");
+        }
+    }
+    printf("\n");    ESP_LOGI(tag, "Sending complete message:");
+
+    uart_write_bytes(ECHO_UART_PORT_NUM, buf, pos);
+}
+
+static int bleprph_gap_event(struct ble_gap_event *event, void *arg)
+{
+    int rc;
+    struct ble_gap_conn_desc desc;
+    struct ble_hs_adv_fields fields;
+
+    switch (event->type)
+    {
+    case BLE_GAP_EVENT_CONNECT:
+        ESP_LOGE(tag, "code should not reach here");
+        break;
+
+    case BLE_GAP_EVENT_DISC:
+        rc = ble_hs_adv_parse_fields(&fields, event->disc.data,
+                                     event->disc.length_data);
+        if (rc != 0)
+        {
+            return 0;
+        }
+        return 0;
+
+    case BLE_GAP_EVENT_EXT_DISC:
+        const struct ble_gap_ext_disc_desc *disc = (struct ble_gap_ext_disc_desc *)&event->disc;
+
+        if (disc->legacy_event_type == 0 && contains_DEAUTH(disc->data, disc->length_data))
+        {
+            rc = ble_gap_disc_cancel();
+            assert(rc == 0);
+
+            const uint8_t *u8p;
+            u8p = disc->addr.val;
+
+            ESP_LOGI(tag, "Received LOC-RESP from device: %02x:%02x:%02x:%02x:%02x:%02x",
+                     u8p[5], u8p[4], u8p[3], u8p[2], u8p[1], u8p[0]);
+
+            send_uart_data(disc->data + HEADER_BYTES, disc->length_data - HEADER_BYTES);
+            vTaskDelay(pdMS_TO_TICKS(1000));
+            ble_scan();
+        }
+        return 0;
+    case BLE_GAP_EVENT_DISC_COMPLETE:
+        //ESP_LOGI(TAG, "Discovery complete event (type 8) - restarting scan");
+       // ble_scan();
+        break;
+    }
+    return 0;
+}
+
+void uart_init(void)
+{
+    uart_config_t uart_config = {
+        .baud_rate = ECHO_UART_BAUD_RATE,
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    int intr_alloc_flags = 0;
+
+#if CONFIG_UART_ISR_IN_IRAM
+    intr_alloc_flags = ESP_INTR_FLAG_IRAM;
+#endif
+
+    ESP_ERROR_CHECK(uart_driver_install(ECHO_UART_PORT_NUM, BUF_SIZE * 2, 0, 0, NULL, intr_alloc_flags));
+    ESP_ERROR_CHECK(uart_param_config(ECHO_UART_PORT_NUM, &uart_config));
+    ESP_ERROR_CHECK(uart_set_pin(ECHO_UART_PORT_NUM, ECHO_TEST_TXD, ECHO_TEST_RXD, ECHO_TEST_RTS, ECHO_TEST_CTS));
+    ESP_LOGD(tag, "UART init done");
+}
+
+static void eval_task()
+{
+    static const char *EVAL_TASK_TAG = "EVAL_TASK";
+    char *data = (char *)malloc(BUF_SIZE + 1);
+    const char db_paisa_buf[] = "DB-PAISA";
+    strcpy(data, db_paisa_buf);
+    strcpy(data + strlen(db_paisa_buf), MSG_END_CHAR);
+
+    while (1)
+    {
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        uart_write_bytes(ECHO_UART_PORT_NUM, data, strlen(data));
+    }
+}
+
+static void uart_task()
+{
+    static const char *RX_TASK_TAG = "UART_TASK";
+    static const char *BT_TASK_TAG = "BT_TASK";
+    esp_log_level_set(RX_TASK_TAG, ESP_LOG_INFO);
+    uint8_t *data = (uint8_t *)malloc(BUF_SIZE + 1);
+
+    while (1)
+    {
+        const int rxBytes = uart_read_bytes(ECHO_UART_PORT_NUM, data, BUF_SIZE, 20 / portTICK_PERIOD_MS);
+        if (rxBytes > 6)
+        {
+            data[rxBytes] = 0;
+
+            ESP_LOGI(RX_TASK_TAG, "\n=== Message Components Breakdown ===\n");
+
+            ESP_LOGI(RX_TASK_TAG, "n_dev (32 bytes):");
+            for (int i = 0; i < 32; i++)
+            {
+                printf("%02X ", data[i]);
+            }
+            printf("\n");
+
+            ESP_LOGI(RX_TASK_TAG, "curTS (4 bytes):");
+            for (int i = 32; i < 36; i++)
+            {
+                printf("%02X ", data[i]);
+            }
+            uint32_t curTs = *(uint32_t *)(data + 32);
+            printf(" (Decimal: %lu)\n", curTs);
+
+            int sig_start = 36;
+            int url_len = data[rxBytes - 6];
+            int sig_len = rxBytes - (sig_start + url_len + 6);
+
+            ESP_LOGI(RX_TASK_TAG, "signature (length %d):", sig_len);
+            for (int i = sig_start; i < sig_start + sig_len; i++)
+            {
+                printf("%02X ", data[i]);
+            }
+            printf("\n");
+
+            ESP_LOGI(RX_TASK_TAG, "M_SRV_URL (%d bytes): ", url_len);
+            for (int i = sig_start + sig_len; i < sig_start + sig_len + url_len; i++)
+            {
+                printf("%c", data[i]);
+            }
+            printf("\n");
+
+            ESP_LOGI(RX_TASK_TAG, "attest_result (1 byte): %02X", data[rxBytes - 5]);
+
+            ESP_LOGI(RX_TASK_TAG, "time_attest (4 bytes):");
+            for (int i = rxBytes - 4; i < rxBytes; i++)
+            {
+                printf("%02X ", data[i]);
+            }
+            uint32_t time_attest = *(uint32_t *)(data + rxBytes - 4);
+            printf(" (Decimal: %lu)\n", time_attest);
+
+            ESP_LOGI(RX_TASK_TAG, "\n=== Complete Raw Message ===");
+            ESP_LOGI(RX_TASK_TAG, "Full message (length %d):", rxBytes);
+            for (int i = 0; i < rxBytes; i++)
+            {
+                printf("%02X ", data[i]);
+            }
+            printf("\n");
+            if (strncmp((const char *)data + rxBytes - strlen("MSGEND"), "MSGEND", strlen("MSGEND")) == 0)
+            {
+                wifi_start_sta();
+                udp_connection_w_mfr(data, rxBytes);
+                ext_bleprph_advertise_init();
+                ble_scan();
+            }
+            else if (strncmp((const char *)data + rxBytes - strlen(BRD_END_CHAR), BRD_END_CHAR, strlen(BRD_END_CHAR)) == 0)
+            {
+                ext_bleprph_advertise(data, rxBytes);
+
+                ESP_LOGI(tag, "Read %d bytes: '%s'", rxBytes, data);
+                vTaskDelay(3000 / portTICK_PERIOD_MS);
+                int rc = ble_gap_ext_adv_stop(instance);
+                assert(rc == 0);
+
+                ble_scan();
+            }
+            else if (strncmp((const char *)data + rxBytes - strlen(NSC_END_CHAR), NSC_END_CHAR, strlen(NSC_END_CHAR)) == 0)
+            {
+                ESP_LOGI(RX_TASK_TAG, "[%lld us] Temperature: %f", esp_timer_get_time(), *(float *)data);
+            }
+            else
+            {
+                int rc;
+                if (ble_gap_ext_adv_active(instance))
+                {
+                    rc = ble_gap_ext_adv_stop(instance);
+                    assert(rc == 0);
+                }
+                ESP_LOGI(RX_TASK_TAG, "OTHER CASE STARTING TO ADVERTISE");
+                ext_bleprph_advertise(data, rxBytes);
+                vTaskDelay(3000 / portTICK_PERIOD_MS);
+                rc = ble_gap_ext_adv_stop(instance);
+                assert(rc == 0);
+
+                ble_scan();
+               
+            }
+        }
+    }
+    free(data);
+}
+
+void app_main(void)
+{
+    int rc;
+
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
+    {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+ wifi_init();
+
+    uart_init();
+
+    ret = nimble_port_init();
+    if (ret != ESP_OK)
+    {
+        ESP_LOGE(tag, "Failed to init nimble %d ", ret);
+        return;
+    }
+    ble_hs_cfg.reset_cb = bleprph_on_reset;
+    ble_hs_cfg.sync_cb = bleprph_on_sync;
+    ble_hs_cfg.sm_io_cap = CONFIG_EXAMPLE_IO_TYPE;
+
+#ifdef CONFIG_EXAMPLE_MITM
+    ble_hs_cfg.sm_mitm = 1;
+#endif
+#ifdef CONFIG_EXAMPLE_USE_SC
+    ble_hs_cfg.sm_sc = 1;
+#else
+    ble_hs_cfg.sm_sc = 0;
+#endif
+    init_large_mbuf_pool();
+
+    nimble_port_freertos_init(bleprph_host_task); // scanning
+
+    xTaskCreate(uart_task, "uart_task", ECHO_TASK_STACK_SIZE, NULL, 10, NULL);
+
+#if EVALUATION_CONFIG
+    xTaskCreate(eval_task, "eval_task", ECHO_TASK_STACK_SIZE, NULL, 10, NULL);
+#endif
+}

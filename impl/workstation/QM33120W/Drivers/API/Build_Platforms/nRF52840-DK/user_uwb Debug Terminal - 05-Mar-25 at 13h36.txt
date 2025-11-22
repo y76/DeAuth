@@ -1,0 +1,9 @@
+DIST: 1.49 m, PDOA: -5562 (-155.6 deg)
+Updated STS key and IV:
+Key: D519C4BB 97FD6FB6 93BC0101 5639882F
+IV: 2CB2872F FEDC5000 D662F8A5 74D16EB6
+Updated addresses - Src: 52F3, Dst: 4DA6
+DIST: 1.50 m, PDOA: -4800 (-134.3 deg)
+DIST: 1.53 m, PDOA: -5374 (-150.3 deg)
+DIST: 1.55 m, PDOA: -5182 (-145.0 deg)
+DIST: 1.53 m, PDOA: -4832 (-135.2 deg)

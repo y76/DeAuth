@@ -1,0 +1,27 @@
+Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o: \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/nrf_assert.c \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/nrf_assert.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_ConfDefaults.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Conf.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Arm_Conf.h \
+ ../../../../../../modules/nrfx/mdk/nrf.h \
+ ../../../../../../modules/nrfx/mdk/nrf52840.h \
+ ../../../../../../components/toolchain/cmsis/include/core_cm4.h \
+ ../../../../../../components/toolchain/cmsis/include/cmsis_version.h \
+ ../../../../../../components/toolchain/cmsis/include/cmsis_compiler.h \
+ ../../../../../../components/toolchain/cmsis/include/cmsis_gcc.h \
+ ../../../../../../components/toolchain/cmsis/include/mpu_armv7.h \
+ ../../../../../../modules/nrfx/mdk/system_nrf52840.h \
+ ../../../../../../modules/nrfx/mdk/nrf52840_bitfields.h \
+ ../../../../../../modules/nrfx/mdk/nrf51_to_nrf52840.h \
+ ../../../../../../modules/nrfx/mdk/nrf52_to_nrf52840.h \
+ ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdio.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdbool.h \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/sdk_errors.h \
+ ../../../../../../components/softdevice/s140/headers/nrf_error.h \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/nordic_common.h \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error_weak.h

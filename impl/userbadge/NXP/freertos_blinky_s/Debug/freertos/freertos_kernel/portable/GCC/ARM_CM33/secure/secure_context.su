@@ -1,0 +1,7 @@
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_context.c:100:17:ulGetSecureContext	24	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_context.c:128:13:vReturnSecureContext	16	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_context.c:137:36:SecureContext_Init	16	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_context.c:181:57:SecureContext_AllocateContext	48	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_context.c:277:36:SecureContext_FreeContext	24	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_context.c:308:36:SecureContext_LoadContext	24	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_context.c:330:36:SecureContext_SaveContext	24	static

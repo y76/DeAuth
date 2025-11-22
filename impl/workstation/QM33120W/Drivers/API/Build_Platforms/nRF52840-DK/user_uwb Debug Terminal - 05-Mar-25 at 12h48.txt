@@ -1,0 +1,76 @@
+DIST: 1.81 m, PDOA: -1130 (-31.6 deg)
+Updated STS key and IV:
+Key: 94F3210E 4E48126B 007AD24C 30620619
+IV: 27CB5E55 E68BB691 B7ABE9D5 C191DB9C
+Updated addresses - Src: 8A84, Dst: 9896
+DIST: 1.83 m, PDOA: 1256 (35.1 deg)
+DIST: 1.78 m, PDOA: -151 (-4.2 deg)
+DIST: 1.81 m, PDOA: -1406 (-39.3 deg)
+Updated STS key and IV:
+Key: A3B5C4E9 B36E7F27 606B97CA 4092FBB9
+IV: 235D1C86 484AD021 DAF86C21 6370D79F
+Updated addresses - Src: 7871, Dst: 356C
+DIST: 1.78 m, PDOA: -3321 (-92.9 deg)
+DIST: 1.91 m, PDOA: 64 (1.8 deg)
+DIST: 1.83 m, PDOA: -1855 (-51.9 deg)
+DIST: 1.82 m, PDOA: -1576 (-44.1 deg)
+DIST: 1.86 m, PDOA: -2748 (-76.9 deg)
+Updated STS key and IV:
+Key: 68AA4A6A E56F235D 31FB9FE5 3B692DB3
+IV: 58F5687E 28EF90F0 3965EA16 C60AD69D
+Updated addresses - Src: AB21, Dst: B7E4
+DIST: 1.78 m, PDOA: -1833 (-51.3 deg)
+DIST: 1.80 m, PDOA: -2062 (-57.7 deg)
+DIST: 1.84 m, PDOA: -2511 (-70.2 deg)
+DIST: 1.71 m, PDOA: -2550 (-71.3 deg)
+DIST: 1.76 m, PDOA: -3245 (-90.8 deg)
+Updated STS key and IV:
+Key: E534F3A1 C318C5A7 3B7EA15A EBE573D8
+IV: 89314C1F 85F16407 ABF9A92B F7CAE762
+Updated addresses - Src: 824E, Dst: A28B
+DIST: 1.49 m, PDOA: -3157 (-88.3 deg)
+DIST: 1.50 m, PDOA: -3333 (-93.2 deg)
+DIST: 1.50 m, PDOA: -2934 (-82.1 deg)
+Updated STS key and IV:
+Key: 63C026ED 58101F7E 196296E4 3BEB8F85
+IV: 45840D33 95938D21 6F7262C4 A89AD64E
+Updated addresses - Src: E8F9, Dst: 7F3A
+DIST: 1.46 m, PDOA: -3406 (-95.3 deg)
+DIST: 1.50 m, PDOA: -2846 (-79.6 deg)
+DIST: 1.56 m, PDOA: -2329 (-65.2 deg)
+DIST: 1.77 m, PDOA: -1783 (-49.9 deg)
+DIST: 1.85 m, PDOA: -2638 (-73.8 deg)
+Updated STS key and IV:
+Key: 37E0DE90 D53B6FD3 8D69209D 9F9BDA73
+IV: 7A0B437C 22D55AD7 5A4FF655 435E4266
+Updated addresses - Src: 87E6, Dst: 2B35
+DIST: 1.52 m, PDOA: -3791 (-106.1 deg)
+DIST: 1.71 m, PDOA: -2357 (-65.9 deg)
+DIST: 1.73 m, PDOA: -968 (-27.1 deg)
+DIST: 1.34 m, PDOA: -5825 (-163.0 deg)
+Updated STS key and IV:
+Key: 8C7ACC70 5AB9624C 11106E76 86AA8878
+IV: BA01333A 3A8F2798 3807836B C58713E2
+Updated addresses - Src: 8133, Dst: 7871
+DIST: 1.36 m, PDOA: 255 (7.1 deg)
+DIST: 1.62 m, PDOA: -3021 (-84.5 deg)
+DIST: 1.82 m, PDOA: 884 (24.7 deg)
+Updated STS key and IV:
+Key: 2B046AD6 793D5F00 810AA3AF 40AB6DC7
+IV: 89A6778C 3F38C71B A18215C5 27D87E00
+Updated addresses - Src: 4209, Dst: 0546
+DIST: 1.34 m, PDOA: -5578 (-156.1 deg)
+DIST: 1.84 m, PDOA: -1334 (-37.3 deg)
+DIST: 1.41 m, PDOA: 523 (14.6 deg)
+DIST: 1.30 m, PDOA: 1082 (30.3 deg)
+DIST: 1.48 m, PDOA: -1966 (-55.0 deg)
+DIST: 1.57 m, PDOA: -4433 (-124.0 deg)
+Updated STS key and IV:
+Key: E917343A C0BEA7D5 2F4E2A49 C21700A8
+IV: 4090E583 9EE76B5E 8F8B3F51 2C4ACDD3
+Updated addresses - Src: 3F56, Dst: CB92
+Frame comparison failed!
+Received frame:  41 88 00 CA DE 42 09 05 46 E1 
+Expected frame: 41 88 00 CA DE 3F 56 CB 92 E1 
+Mismatch at byte(s): 5 6 7 8 
+DIST: 1.41 m, PDOA: 2235 (62.5 deg)

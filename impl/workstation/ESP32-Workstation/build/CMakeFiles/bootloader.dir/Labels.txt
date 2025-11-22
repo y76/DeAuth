@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/CMakeFiles/bootloader
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/CMakeFiles/bootloader.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/CMakeFiles/bootloader-complete.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/pavel/apps/DeAuth/impl/workstation/ESP32-Workstation/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

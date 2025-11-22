@@ -1,0 +1,2 @@
+../board/tzm_config.c:146:6:BOARD_InitTrustZone	4	static
+../board/tzm_config.c:288:6:BOARD_InitBootTEE	8	static

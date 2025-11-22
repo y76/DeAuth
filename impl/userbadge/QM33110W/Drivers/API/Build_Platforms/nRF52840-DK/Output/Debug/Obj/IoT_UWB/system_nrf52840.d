@@ -1,0 +1,25 @@
+Output/Debug/Obj/IoT_UWB/system_nrf52840.o: \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/system_nrf52840.c \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_ConfDefaults.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Conf.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Arm_Conf.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdbool.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf52840.h \
+ sdk/components/toolchain/cmsis/include/core_cm4.h \
+ sdk/components/toolchain/cmsis/include/cmsis_version.h \
+ sdk/components/toolchain/cmsis/include/cmsis_compiler.h \
+ sdk/components/toolchain/cmsis/include/cmsis_gcc.h \
+ sdk/components/toolchain/cmsis/include/mpu_armv7.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/system_nrf52840.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf52840_bitfields.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf51_to_nrf52840.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf52_to_nrf52840.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/compiler_abstraction.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf_erratas.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf51_erratas.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf52_erratas.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf53_erratas.h \
+ /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/nrf91_erratas.h

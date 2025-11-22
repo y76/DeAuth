@@ -9,5 +9,5 @@ Restart=on-failure
 WorkingDirectory=%h/apps/DeAuth/impl/workstation
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
 

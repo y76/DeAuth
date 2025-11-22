@@ -1,0 +1,6 @@
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_heap.c:134:13:prvHeapInit	24	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_heap.c:182:13:prvInsertBlockIntoFreeList	24	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_heap.c:245:8:pvPortMalloc	32	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_heap.c:392:6:vPortFree	24	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_heap.c:440:8:xPortGetFreeHeapSize	4	static
+../freertos/freertos_kernel/portable/GCC/ARM_CM33/secure/secure_heap.c:446:8:xPortGetMinimumEverFreeHeapSize	4	static

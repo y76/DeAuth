@@ -1,0 +1,5 @@
+/home/pavel/apps/LOC-PAISA/1_IoTDev/1_NXPBoard/freertos_blinky_s/drivers/fsl_gpio.h:210:20:GPIO_PortToggle	24	static
+../nsc_functions/nsc_functions.c:63:5:NSCFunction	32	static
+../nsc_functions/nsc_functions.c:87:5:vToggleGreenLED	8	static
+../nsc_functions/nsc_functions.c:100:5:vToggleBlueLED	8	static
+../nsc_functions/nsc_functions.c:113:5:getSystemCoreClock	4	static

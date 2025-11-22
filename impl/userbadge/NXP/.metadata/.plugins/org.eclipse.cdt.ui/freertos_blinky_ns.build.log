@@ -1,0 +1,18 @@
+17:47:02 **** Build of configuration Debug for project freertos_blinky_ns ****
+make -r -j20 all 
+Building target: freertos_blinky_ns.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="freertos_blinky_ns.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T freertos_blinky_ns_Debug.ld -o "freertos_blinky_ns.axf" ./utilities/fsl_assert.o ./utilities/fsl_debug_console.o ./utilities/fsl_str.o  ./startup/boot_multicore_slave.o ./startup/startup_lpc55s69_cm33_core0.o  ./source/main_ns.o ./source/semihost_hardfault.o  ./freertos/freertos_kernel/portable/MemMang/heap_4.o  ./freertos/freertos_kernel/portable/GCC/ARM_CM33/non_secure/port.o ./freertos/freertos_kernel/portable/GCC/ARM_CM33/non_secure/portasm.o  ./freertos/freertos_kernel/portable/Common/mpu_wrappers.o  ./freertos/freertos_kernel/croutine.o ./freertos/freertos_kernel/event_groups.o ./freertos/freertos_kernel/list.o ./freertos/freertos_kernel/queue.o ./freertos/freertos_kernel/stream_buffer.o ./freertos/freertos_kernel/tasks.o ./freertos/freertos_kernel/timers.o  ./drivers/fsl_clock.o ./drivers/fsl_common.o ./drivers/fsl_common_arm.o ./drivers/fsl_flexcomm.o ./drivers/fsl_gpio.o ./drivers/fsl_power.o ./drivers/fsl_reset.o ./drivers/fsl_usart.o  ./device/system_LPC55S69_cm33_core0.o  ./component/uart/fsl_adapter_usart.o  ./component/serial_manager/fsl_component_serial_manager.o ./component/serial_manager/fsl_component_serial_port_uart.o  ./component/lists/fsl_component_generic_list.o  ./board/clock_config.o    "/home/pavel/apps/LOC-PAISA/1_IoTDev/1_NXPBoard/freertos_blinky_s/Debug/freertos_blinky_s_CMSE_lib.o"
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       88480 B       384 KB     22.50%
+            Ram0:       61524 B        80 KB     75.10%
+Finished building target: freertos_blinky_ns.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "freertos_blinky_ns.axf"; # arm-none-eabi-objcopy -v -O binary "freertos_blinky_ns.axf" "freertos_blinky_ns.bin" ; # checksum -p LPC55S69 -d "freertos_blinky_ns.bin";
+   text	   data	    bss	    dec	    hex	filename
+  36648	  51832	   9692	  98172	  17f7c	freertos_blinky_ns.axf
+ 
+
+17:47:03 Build Finished. 0 errors, 0 warnings. (took 214ms)
+

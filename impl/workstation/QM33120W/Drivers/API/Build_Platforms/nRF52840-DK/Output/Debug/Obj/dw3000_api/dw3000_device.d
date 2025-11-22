@@ -1,0 +1,20 @@
+Output/Debug/Obj/dw3000_api/dw3000_device.o: \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_device.c \
+ ../../Shared/dwt_uwb_driver/deca_device_api.h \
+ ../../Shared/dwt_uwb_driver/deca_types.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stddef.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_ConfDefaults.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Conf.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Arm_Conf.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdbool.h \
+ ../../Shared/dwt_uwb_driver/deca_interface.h \
+ ../../Shared/dwt_uwb_driver/deca_device_api.h \
+ ../../Shared/dwt_uwb_driver/deca_types.h \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_deca_regs.h \
+ /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_deca_vals.h \
+ ../../Shared/dwt_uwb_driver/deca_version.h \
+ ../../Shared/dwt_uwb_driver/deca_rsl.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/assert.h \
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/stdlib.h

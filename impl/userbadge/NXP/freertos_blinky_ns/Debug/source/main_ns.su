@@ -1,0 +1,11 @@
+/home/pavel/apps/LOC-PAISA/1_IoTDev/1_NXPBoard/freertos_blinky_ns/drivers/fsl_power.h:398:20:POWER_SetBodVbatLevel	16	static
+../source/main_ns.c:132:6:SystemInit	4	static
+../source/main_ns.c:144:13:prvCreateTasks	16	static
+../source/main_ns.c:166:13:prvCallback	4	static
+../source/main_ns.c:175:13:prvSecureCallingTask	32	static
+../source/main_ns.c:215:13:prvLEDTogglingTask	16	static
+../source/main_ns.c:235:6:vApplicationGetIdleTaskMemory	24	static
+../source/main_ns.c:262:6:vApplicationGetTimerTaskMemory	24	static
+../source/main_ns.c:287:6:vApplicationStackOverflowHook	16	static
+../source/main_ns.c:297:6:vGetRegistersFromStack	48	static
+../source/main_ns.c:363:5:main	8	static
