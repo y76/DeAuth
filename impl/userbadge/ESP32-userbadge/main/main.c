@@ -710,7 +710,6 @@ static void eval_task()
         uart_write_bytes(ECHO_UART_PORT_NUM, data, strlen(data));
     }
 }
-
 static void uart_task()
 {
     static const char *RX_TASK_TAG = "UART_TASK";
@@ -724,6 +723,42 @@ static void uart_task()
         if (rxBytes > 6)
         {
             data[rxBytes] = 0;
+
+            // Check for hash chain error message
+            if (strncmp((const char *)data, "HASH_ERR:", strlen("HASH_ERR:")) == 0)
+            {
+                ESP_LOGI(RX_TASK_TAG, "\n=== Hash Chain Error Message ===\n");
+                
+                // Find end marker
+                const char *end_marker = ":HASH_ERR_END";
+                char *end_ptr = strstr((char *)data, end_marker);
+                if (end_ptr == NULL) {
+                    ESP_LOGE(RX_TASK_TAG, "Invalid hash error message format - missing end marker");
+                    continue;
+                }
+                
+                // Parse device ID (4 bytes after marker)
+                uint8_t *dev_id_ptr = data + strlen("HASH_ERR:");
+                uint32_t device_id = *((uint32_t *)dev_id_ptr);
+                
+                // Parse HASH_CHAIN_ROOT_INDEX (4 bytes after device ID)
+                uint8_t *index_ptr = dev_id_ptr + 4;
+                uint32_t hash_chain_root_index = *((uint32_t *)index_ptr);
+                
+                ESP_LOGI(RX_TASK_TAG, "Device ID: %lu", device_id);
+                ESP_LOGI(RX_TASK_TAG, "Hash Chain Root Index: %lu", hash_chain_root_index);
+                
+                ESP_LOGI(RX_TASK_TAG, "Raw message (hex):");
+                for (int i = 0; i < rxBytes; i++) {
+                    printf("%02X ", data[i]);
+                }
+                printf("\n");
+                
+                // Handle the error (e.g., notify user, log, etc.)
+                // You can add your error handling logic here
+                
+                continue;  // Skip other message processing
+            }
 
             ESP_LOGI(RX_TASK_TAG, "\n=== Message Components Breakdown ===\n");
 
