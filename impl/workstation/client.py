@@ -22,23 +22,24 @@ def gen_msg_init(badge_info):
         badge_public_key = f.read()
     badge_id = int(badge_info['badgeid'])
 
-    #generate 32 bit random number (challenge)
     chal = random.getrandbits(32)
 
-    #generate 32 bit random number (temporary)
-    hash_chain = random.getrandbits(32)
+    #hashchain_output.txt 
+    hash_chain = 'e3f84037781d6d9a44186a03458473d0b88e19e78cd0906491ff66044d5edbc0' # cdad0a2a1dbaf5dccc06d0559e60060dc7969555cc91af2383444f52d270b916
+    hash_chain_ind = 94
 
     print(badge_public_key)
     print(chal)
     print(hash_chain)
     print(badge_id)
+    print(hash_chain_ind)
     
-    send_msg_init(badge_public_key, chal, hash_chain, badge_id)
+    send_msg_init(badge_public_key, chal, hash_chain, badge_id, hash_chain_ind)
 
-def send_msg_init(badge_public_key, chal, hash_chain, badge_id):
-    msg = f'{START_MSG}{DELIMITER}{badge_public_key}{DELIMITER}{chal}{DELIMITER}{hash_chain}{DELIMITER}{badge_id}{DELIMITER}{END_MSG}'
+def send_msg_init(badge_public_key, chal, hash_chain, badge_id, hash_chain_ind):
+    # ESP32 will compute MAC over: challenge, ephemeral_public, iv, hash_chain, badge_id, hash_chain_ind, encrypted_data
+    msg = f'{START_MSG}{DELIMITER}{badge_public_key}{DELIMITER}{chal}{DELIMITER}{hash_chain}{DELIMITER}{badge_id}{DELIMITER}{hash_chain_ind}{DELIMITER}{END_MSG}'
     
-    # Send via HTTP
     try:
         url = f'http://{ESP32_IP}/deauth'
         req = urllib.request.Request(url, data=msg.encode('utf-8'), method='POST')

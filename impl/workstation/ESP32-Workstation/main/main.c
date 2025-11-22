@@ -132,8 +132,9 @@ typedef struct
 typedef struct {
     char *public_key;
     uint32_t challenge;
-    uint32_t hash_chain;
+    char *hash_chain;
     uint32_t badge_id;
+    uint32_t hash_chain_ind;
 } deauth_message_t;
 
 void send_to_python(double distance)
@@ -816,34 +817,56 @@ static bool parse_deauth_message(const char *content, deauth_message_t *msg)
     char *start = strstr((char *)content, start_marker);
     char *end = strstr((char *)content, end_marker);
     
+    if (!start || !end) {
+        return false;
+    }
+    
     start += strlen(start_marker);
     
+    // Parse public key
     char *pubkey_end = strchr(start, ':');
+    if (!pubkey_end) return false;
     size_t pubkey_len = pubkey_end - start;
     msg->public_key = malloc(pubkey_len + 1);
     memcpy(msg->public_key, start, pubkey_len);
     msg->public_key[pubkey_len] = '\0';
 
+    // Parse challenge (uint32_t)
     char *chal_start = pubkey_end + 1;
     char *chal_end = strchr(chal_start, ':');
+    if (!chal_end) return false;
     size_t chal_len = chal_end - chal_start;
     char chal_str[32] = {0};
     memcpy(chal_str, chal_start, chal_len < sizeof(chal_str) ? chal_len : sizeof(chal_str) - 1);
     msg->challenge = (uint32_t)strtoul(chal_str, NULL, 10);
 
+    // Parse hash_chain (64-char hex string = 32 bytes)
     char *hash_start = chal_end + 1;
     char *hash_end = strchr(hash_start, ':');
+    if (!hash_end) return false;
     size_t hash_len = hash_end - hash_start;
-    char hash_str[32] = {0};
-    memcpy(hash_str, hash_start, hash_len < sizeof(hash_str) ? hash_len : sizeof(hash_str) - 1);
-    msg->hash_chain = (uint32_t)strtoul(hash_str, NULL, 10);
     
+    // Store as hex string (65 bytes: 64 chars + null terminator)
+    msg->hash_chain = malloc(65);  // 64 hex chars + null terminator
+    memcpy(msg->hash_chain, hash_start, hash_len < 64 ? hash_len : 64);
+    msg->hash_chain[64] = '\0';  // Ensure null-terminated
+
+    // Parse badge_id
     char *badge_start = hash_end + 1;
+    char *badge_end = strchr(badge_start, ':');
+    if (!badge_end) return false;
     size_t badge_len = end - badge_start;
     char badge_str[32] = {0};
     memcpy(badge_str, badge_start, badge_len < sizeof(badge_str) ? badge_len : sizeof(badge_str) - 1);
     msg->badge_id = (uint16_t)strtoul(badge_str, NULL, 10);
-    
+
+    char *ind_start = badge_end + 1;
+    char *ind_end = strchr(ind_start, ':');
+    if (!ind_end) return false;
+    size_t ind_len = ind_end - ind_start;
+    char ind_str[32] = {0};
+    memcpy(ind_str, ind_start, ind_len < sizeof(ind_str) ? ind_len : sizeof(ind_str) - 1);
+    msg->hash_chain_ind = (uint32_t)strtoul(ind_str, NULL, 10);   
     return true;
 }
 
@@ -878,8 +901,9 @@ static esp_err_t deauth_handler(httpd_req_t *req)
     ESP_LOGI(TAG, "Parsed values:");
     ESP_LOGI(TAG, "Public Key:\n%s", msg.public_key);
     ESP_LOGI(TAG, "Challenge: %lu", msg.challenge);
-    ESP_LOGI(TAG, "Hash Chain: %lu", msg.hash_chain);
+    ESP_LOGI(TAG, "Hash Chain: %s", msg.hash_chain);
     ESP_LOGI(TAG, "Badge ID: %lu", msg.badge_id);
+    ESP_LOGI(TAG, "Hash Chain Index: %lu", msg.hash_chain_ind);
     
     // TODO: Save these values to global variables or process them
     // For example:
@@ -974,21 +998,36 @@ static esp_err_t deauth_handler(httpd_req_t *req)
         }
         printf("\n");
 
-        memcpy(complete_message  + total_length, &msg.hash_chain, 4); 
-        total_length += 4;
-
-        ESP_LOGI(TAG, "After chain (%zu bytes total):", total_length);
-        for (size_t i = 0; i < total_length; i++) {
-            printf("%02X ", complete_message[i]);
-            if ((i + 1) % 16 == 0) printf("\n");
+        // Convert hash_chain hex string to 32-byte array
+        uint8_t hash_chain_bytes[32];
+        if (strlen(msg.hash_chain) >= 64) {
+            for (int i = 0; i < 32; i++) {
+                char hex_byte[3] = {msg.hash_chain[i*2], msg.hash_chain[i*2+1], '\0'};
+                hash_chain_bytes[i] = (uint8_t)strtoul(hex_byte, NULL, 16);
+            }
+        } else {
+            ESP_LOGE(TAG, "Invalid hash chain length");
+            // Handle error
         }
-        printf("\n");
+
+        memcpy(complete_message + total_length, hash_chain_bytes, 32);
+        total_length += 32;
 
         memcpy(complete_message + total_length, &msg.badge_id, sizeof(msg.badge_id)); 
         total_length += sizeof(msg.badge_id);
 
 
         ESP_LOGI(TAG, "After badge (%zu bytes total):", total_length);
+        for (size_t i = 0; i < total_length; i++) {
+            printf("%02X ", complete_message[i]);
+            if ((i + 1) % 16 == 0) printf("\n");
+        }
+        printf("\n");
+
+        memcpy(complete_message + total_length, &msg.hash_chain_ind, sizeof(msg.hash_chain_ind));
+        total_length += sizeof(msg.hash_chain_ind);
+
+        ESP_LOGI(TAG, "After hash_chain_ind (%zu bytes total):", total_length);
         for (size_t i = 0; i < total_length; i++) {
             printf("%02X ", complete_message[i]);
             if ((i + 1) % 16 == 0) printf("\n");
@@ -1005,6 +1044,29 @@ static esp_err_t deauth_handler(httpd_req_t *req)
             if ((i + 1) % 16 == 0) printf("\n");
         }
         printf("\n");
+
+        uint8_t computed_mac[32];
+        mbedtls_md_context_t ctx;
+        const mbedtls_md_info_t *md_info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
+
+        mbedtls_md_init(&ctx);
+        mbedtls_md_setup(&ctx, md_info, 1);  // 1 = HMAC mode
+        mbedtls_md_hmac_starts(&ctx, hash_chain_bytes, 32);  // Use hash_chain as MAC key
+        mbedtls_md_hmac_update(&ctx, complete_message, total_length);  // MAC over all fields
+        mbedtls_md_hmac_finish(&ctx, computed_mac);
+        mbedtls_md_free(&ctx);
+
+        // Append MAC to message
+        memcpy(complete_message + total_length, computed_mac, 32);
+        total_length += 32;
+
+        ESP_LOGI(TAG, "Complete message with MAC (%zu bytes total):", total_length);
+        for (size_t i = 0; i < total_length; i++) {
+            printf("%02X ", complete_message[i]);
+            if ((i + 1) % 16 == 0) printf("\n");
+        }
+        printf("\n");
+
 
         send_ble_message(complete_message, total_length);
     }
