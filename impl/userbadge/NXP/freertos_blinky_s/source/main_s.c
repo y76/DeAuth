@@ -107,6 +107,7 @@ typedef void (*NonSecureResetHandler_t)(void) __attribute__((cmse_nonsecure_call
 
 #define PACKET_SEND_TIMER	5
 #define ATTESTATION_TIMER	5
+#define DEBUG 1
 
 #define BUF_SIZE			(256)
 #define SIG_SIZE			(256)
@@ -123,6 +124,10 @@ typedef void (*NonSecureResetHandler_t)(void) __attribute__((cmse_nonsecure_call
 #define MSG_END_CHAR		"MSGEND"
 #define ACK_END_CHAR		"ACKEND"
 
+static uint8_t HASH_CHAIN_ROOT[HASH_SIZE] = {
+    0x34, 0xa1, 0x0e, 0x3f, 0x1a, 0xc5, 0xbc, 0x7c, 0x6a, 0x7c, 0x7f, 0xa3, 0xae, 0x4f, 0x1c, 0x2a, 0x52, 0xf7, 0x4b, 0x26, 0xcb, 0xb5, 0x7c, 0xfa, 0x70, 0xc7, 0xe6, 0xa3, 0x85, 0xec, 0x6a, 0x36
+};
+static uint8_t HASH_CHAIN_ROOT_INDEX = 99;
 #define CONVERT_MS_TO_S		(1000)
 
 /*-----------------------------------------------------------*/
@@ -148,7 +153,7 @@ void BootNonSecure(uint32_t ulNonSecureStartAddress);
  */
 void announcement();
 /*-----------------------------------------------------------*/
-
+uint8_t attest();
 
 void ctimer_match_callback(uint32_t flags);
 
@@ -212,10 +217,14 @@ void SysTick_Handler(void)
     s_MsCount++;
 }
 
+//time_poll is 5 seconds
 void ctimer_match_callback(uint32_t flags)
 {
     DWT->CYCCNT = 0;
-    announcement();
+    //announcement();
+    const uint8_t deauth_msg[] = "DeAuth:Send:DeAuth";
+    USART_WriteBlocking(WIFI_USART2, deauth_msg, sizeof(deauth_msg) - 1);
+
 	uint32_t cycles = DWT->CYCCNT;
 
 	// times will be adjusted as much as the time it takes to finish the broadcast
@@ -247,7 +256,7 @@ void __sha256(const char *msg, size_t msg_len, char *digest)
 	mbedtls_sha256_finish(&sha256, digest);
 }
 
-#define MAX_BUFFER_SIZE 256  
+#define MAX_BUFFER_SIZE 256
 
 #define RX_BUFFER_SIZE 256
 #define START_MARKER "PAISASTART:"
@@ -260,7 +269,7 @@ static uint16_t bufferIndex = 0;
 
 void findMessage(const uint8_t* buffer, uint16_t length) {
     if (!buffer || length == 0) {
-        return; 
+        return;
     }
 
     uint16_t max_search = (length < 1000) ? length : 1000;
@@ -358,7 +367,7 @@ static int decrypt_with_private_key(const uint8_t *encrypted_data, size_t encryp
                                   iv, 12,
                                   NULL, 0,
                                   tag, 16,
-                                  encrypted_data, 
+                                  encrypted_data,
                                   decrypted_data + START_MARKER_LENGTH);
 
     if (ret != 0) {
@@ -403,7 +412,7 @@ cleanup:
 void WIFI_USART_IRQHandler(void)
 {
    uint16_t safety_counter = 0;
-   const uint16_t MAX_ITERATIONS = 5; 
+   const uint16_t MAX_ITERATIONS = 5;
 
    while ((kUSART_RxFifoNotEmptyFlag | kUSART_RxError) & USART_GetStatusFlags(WIFI_USART) &&
           safety_counter++ < MAX_ITERATIONS)
@@ -461,33 +470,16 @@ void WIFI_USART_IRQHandler(void)
                }
 
                uint8_t *message_start = rxBuffer + dataStart;
-               uint8_t *nonce = message_start;  // First 32 bytes - just for printing
-               uint8_t *ephemeral_public = message_start + 32;  // Next 65 bytes - used for decryption
-               uint8_t *iv = message_start + 32 + 65;  // Next 12 bytes - used for decryption
-               uint8_t *encrypted_data = message_start + 32 + 65 + 12;  // Rest is encrypted data
-               size_t encrypted_length = total_message_length - (32 + 65 + 12);
-
-               if (memcmp(nonce, last_sent_nonce, NONCE_SIZE) != 0 &&
-                   memcmp(nonce, previous_sent_nonce, NONCE_SIZE) != 0) {
-                   PRINTF("Nonce mismatch - breaking\n");
-                   PRINTF("Received nonce: ");
-                   for (int i = 0; i < 32; i++) {
-                       PRINTF("%02x ", nonce[i]);
-                   }
-                   PRINTF("\nExpected recent nonce: ");
-                   for (int i = 0; i < 32; i++) {
-                       PRINTF("%02x ", last_sent_nonce[i]);
-                   }
-                   PRINTF("\nExpected previous nonce: ");
-                   for (int i = 0; i < 32; i++) {
-                       PRINTF("%02x ", previous_sent_nonce[i]);
-                   }
-                   PRINTF("\n");
-                   bufferIndex = 0;
-                   return;
-               }
-
-               PRINTF("Nonce match - continuing with decryption\n");
+               uint8_t *nonce = message_start;
+               uint8_t *ephemeral_public = message_start + 4;
+               uint8_t *iv = message_start + 4 + 65;
+               uint8_t *hash_chain = message_start + 4 + 65 + 12;
+               uint8_t *badge_id = message_start + 4 + 65 + 12 + 32;
+               uint8_t *hash_chain_ind_ptr = message_start + 4 + 65 + 12 + 32 + 4;
+               size_t encrypted_data_offset = 4 + 65 + 12 + 32 + 4 + 4;
+               uint8_t *encrypted_data = message_start + 4 + 65 + 12 + 32 + 4 + 4;
+               uint8_t *mac = message_start + total_message_length - 32;
+               size_t encrypted_length = total_message_length - encrypted_data_offset - 32;
 
                PRINTF("Ephemeral public key length: 65\n");
                PRINTF("Detailed ephemeral public key:\n");
@@ -502,6 +494,163 @@ void WIFI_USART_IRQHandler(void)
                    PRINTF("%02x ", iv[i]);
                }
                PRINTF("\n");
+               uint32_t hash_chain_ind = *((uint32_t *)hash_chain_ind_ptr);
+               PRINTF("Hash chain index: %u\n", hash_chain_ind);
+
+
+               uint8_t mac_input[total_message_length - 32];
+               size_t mac_input_len = total_message_length - 32;
+               memcpy(mac_input, message_start, mac_input_len);
+
+               uint8_t computed_mac[32];
+               mbedtls_md_context_t ctx;
+               const mbedtls_md_info_t *md_info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
+
+               mbedtls_md_init(&ctx);
+               mbedtls_md_setup(&ctx, md_info, 1);
+               mbedtls_md_hmac_starts(&ctx, hash_chain, 32);
+               mbedtls_md_hmac_update(&ctx, mac_input, mac_input_len);
+               mbedtls_md_hmac_finish(&ctx, computed_mac);
+               mbedtls_md_free(&ctx);
+
+               PRINTF("Computed MAC:\n");
+               for (int i = 0; i < 32; i++) {
+                   PRINTF("%02x ", computed_mac[i]);
+               }
+               PRINTF("\n");
+
+               PRINTF("Received MAC:\n");
+               for (int i = 0; i < 32; i++) {
+                   PRINTF("%02x ", mac[i]);
+               }
+               PRINTF("\n");
+
+               if (memcmp(mac, computed_mac, 32) != 0) {
+                   PRINTF("✗ MAC verification FAILED\n");
+                   bufferIndex = 0;
+                   return;
+               }
+               PRINTF("✓ MAC verification SUCCESS\n");
+
+
+               PRINTF("Hash chain length: 32\n");
+               PRINTF("Hash chain data:\n");
+               for (int i = 0; i < 32; i++) {
+                   PRINTF("%02x ", hash_chain[i]);
+               }
+               PRINTF("\n");
+
+               uint32_t hash_iterations = HASH_CHAIN_ROOT_INDEX - hash_chain_ind;
+
+               PRINTF("Hash chain index: %u (stored root index: %u, iterations needed: %u)\n",
+                      hash_chain_ind, HASH_CHAIN_ROOT_INDEX, hash_iterations);
+
+               if (hash_iterations == 0) {
+                   PRINTF("✗ Hash chain verification FAILED: Received index equals root index (no iterations needed)\n");
+                   bufferIndex = 0;
+                   return;
+               }
+
+               if (hash_iterations > HASH_CHAIN_ROOT_INDEX) {
+                   PRINTF("✗ Hash chain verification FAILED: Received index (%u) is greater than root index (%u)\n",
+                          hash_chain_ind, HASH_CHAIN_ROOT_INDEX);
+                   bufferIndex = 0;
+                   return;
+               }
+
+               uint8_t hashed[HASH_SIZE];
+               memcpy(hashed, hash_chain, HASH_SIZE);
+
+               for (uint32_t i = 0; i < hash_iterations; i++) {
+                   __sha256((const char *)hashed, HASH_SIZE, (char *)hashed);
+
+                   if (i == 0) {
+                       PRINTF("Hash chain after first hash:\n");
+                       for (int j = 0; j < HASH_SIZE; j++) {
+                           PRINTF("%02x ", hashed[j]);
+                       }
+                       PRINTF("\n");
+                   }
+               }
+
+               PRINTF("Hash chain after %u hash(es):\n", hash_iterations);
+               for (int i = 0; i < HASH_SIZE; i++) {
+                   PRINTF("%02x ", hashed[i]);
+               }
+               PRINTF("\n");
+
+
+               if(!DEBUG)
+               {
+               if (memcmp(hashed, HASH_CHAIN_ROOT, HASH_SIZE) == 0) {
+                   PRINTF("✓ Hash chain verification SUCCESS: Received hash (index %u) matches root (index %u) after one hash\n",
+                          HASH_CHAIN_ROOT_INDEX - 1, HASH_CHAIN_ROOT_INDEX);
+
+                   memcpy(HASH_CHAIN_ROOT, hash_chain, HASH_SIZE);
+
+                   HASH_CHAIN_ROOT_INDEX = hash_chain_ind;
+
+                   PRINTF("Updated root to index %u\n", HASH_CHAIN_ROOT_INDEX);
+                   PRINTF("New root:\n");
+                   for (int i = 0; i < HASH_SIZE; i++) {
+                       PRINTF("%02x ", HASH_CHAIN_ROOT[i]);
+                   }
+                   PRINTF("\n");
+               } else {
+                   PRINTF("✗ Hash chain verification FAILED: Received hash does not match root after one hash\n");
+                   PRINTF("Expected root:\n");
+                   for (int i = 0; i < HASH_SIZE; i++) {
+                       PRINTF("%02x ", HASH_CHAIN_ROOT[i]);
+                   }
+                   PRINTF("\n");
+                   const char *error_marker = "HASH_ERR:";
+                   uint8_t error_msg[256];
+                   size_t error_len = 0;
+
+                   // Add marker
+                   memcpy(error_msg + error_len, error_marker, strlen(error_marker));
+                   error_len += strlen(error_marker);
+
+                   // Add device ID (4 bytes)
+                   const uint32_t id_dev = ID_DEV;
+                   memcpy(error_msg + error_len, &id_dev, sizeof(id_dev));
+                   error_len += sizeof(id_dev);
+
+                   // Add HASH_CHAIN_ROOT_INDEX (4 bytes)
+                   memcpy(error_msg + error_len, &HASH_CHAIN_ROOT_INDEX, sizeof(HASH_CHAIN_ROOT_INDEX));
+                   error_len += sizeof(HASH_CHAIN_ROOT_INDEX);
+
+                   // Add end marker
+                   const char *end_marker = ":HASH_ERR_END";
+                   memcpy(error_msg + error_len, end_marker, strlen(end_marker));
+                   error_len += strlen(end_marker);
+
+                   USART_WriteBlocking(WIFI_USART, error_msg, error_len);
+
+                   bufferIndex = 0;
+
+                   bufferIndex = 0;
+                   return;
+               }
+               }
+
+
+               PRINTF("Badge ID (4 bytes):\n");
+               for (int i = 0; i < 4; i++) {
+                   PRINTF("%02x ", badge_id[i]);
+               }
+               PRINTF("\n");
+               const uint8_t EXPECTED_BADGE_ID[4] = {0x10, 0x00, 0x00, 0x00};
+               if (memcmp(badge_id, EXPECTED_BADGE_ID, 4) != 0) {
+                   PRINTF("Badge ID verification FAILED\n");
+                   for (int i = 0; i < 4; i++) {
+                       PRINTF("%02x ", badge_id[i]);
+                   }
+                   PRINTF("\n");
+                   bufferIndex = 0;
+                   return;
+               }
+               PRINTF("Badge ID verification SUCCESS\n");
 
                PRINTF("Encrypted data length: %zu\n", encrypted_length);
                PRINTF("First 16 bytes of encrypted data:\n");
@@ -509,6 +658,9 @@ void WIFI_USART_IRQHandler(void)
                    PRINTF("%02x ", encrypted_data[i]);
                }
                PRINTF("\n");
+
+               attest();
+               PRINTF("Attestation Performed:\n");
 
                uint8_t decrypted_data[MAX_BUFFER_SIZE];
                size_t decrypted_length = 0;
@@ -992,8 +1144,8 @@ int main(void)
 								10);
 	if(ret != 0){while(1);}
 
-	DisableIRQ(WIFI_USART_IRQn);    
-	DisableIRQ(WIFI_USART2_IRQn);   
+	DisableIRQ(WIFI_USART_IRQn);
+	DisableIRQ(WIFI_USART2_IRQn);
 
 #ifdef PERFORMANCE_EVALUATION
 	cycle_records[0] = DWT->CYCCNT;
@@ -1019,7 +1171,7 @@ int main(void)
    	cycle_records[3] = DWT->CYCCNT;
 #endif
 
-   	announcement();
+   	//announcement();
 
    	PRINTF("Finish booting process with time sync \n\r");
 
