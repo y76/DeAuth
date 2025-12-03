@@ -37,7 +37,7 @@ rule WS_Initial[role="WS"]:
 
 rule UB_Initial[role="UB"]:
     [ !Ltk($UB, ~ltk_ub)
-    , !SignPk($WB, sign_pub)
+    , !SignPk($WS, sign_pub)
     , !AttResult($UB, result) ]
   -->
     [ UB_Initial($UB, ~ltk_ub, sign_pub, result) ]
