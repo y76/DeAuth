@@ -12,6 +12,7 @@ rule Register_Enc_Ltk:
   -->
     [ !Ltk($dev, ~ltk)
     , !Pk($dev, 'g'^~ltk)
+    , Out('g'^~ltk)
     ]
 
 rule Register_Sign_Ltk:
@@ -19,6 +20,7 @@ rule Register_Sign_Ltk:
   -->
     [ !SignLtk($dev, ~ltk)
     , !SignPk($dev, pk(~ltk))
+    , Out(pk(~ltk))
     ]
 
 rule Register_Attestation_Result:
@@ -46,7 +48,7 @@ rule UB_Initial[role="UB"]:
 rule WS_Start_Session[role="WS"]:
     let ws_pub = 'g'^~ws_ephem
         ss = ub_pub^~ws_ephem
-        message = <senc(<~sts_session_secret,~challenge>,ss), ws_pub>
+        message = <senc(<~sts_session_secret, ~challenge>,ss), ws_pub>
         signature = sign(message, sign_ltk)
     in
     [ WS_Initial($UB, $WS, ub_pub, sign_ltk, result)
@@ -96,12 +98,12 @@ rule UB_Decrypt_Session[role="UB"]:
 lemma exist_path:
   exists-trace
     "Ex #i att.
-		Receieve_Attestation(att) @i"
+      Receieve_Attestation(att) @i"
 
 // The session secret remains secret throughout the protocol run
 lemma sts_session_secrecy:
     "All #i secret. Receive_Session_Secret(secret) @i
-	  ==> not Ex #j. K(secret)@j"
+      ==> not Ex #j. K(secret)@j"
 
 // authentication
 lemma sts_session_authentication:
@@ -115,6 +117,6 @@ lemma attestation_result_secrecy:
 
 lemma attestation_result_authentication:
     "All #i att. Receieve_Attestation(att)@i
-    ==> Ex #j. Send_Attestation(att)@j & j<i"
+      ==> Ex #j. Send_Attestation(att)@j & j<i"
 
 end
