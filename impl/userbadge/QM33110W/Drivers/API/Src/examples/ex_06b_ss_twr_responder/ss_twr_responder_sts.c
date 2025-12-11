@@ -523,14 +523,24 @@ void uart_init(void)
  */
 int ss_twr_responder_sts(void)
 {
-   uart_init();
+    // ============================================
+    // 1. INIT UART FIRST
+    // ============================================
+    uart_init();
     printf("1. UART init done\n");
     
     // ============================================
-    // INIT UWB FIRST (before SoftDevice locks things)
+    // 2. INIT BLE (before UWB)
     // ============================================
-    
-    printf("Initializing UWB BEFORE BLE...\n");
+    printf("Initializing BLE...\n");
+    ble_stack_init();
+    scan_start();
+    printf("BLE scanning active!\n");
+    while(1){}
+    // ============================================
+    // 3. INIT UWB LAST
+    // ============================================
+    printf("Initializing UWB...\n");
     
     test_run_info((unsigned char *)APP_NAME);
 
@@ -545,21 +555,21 @@ int ss_twr_responder_sts(void)
     Sleep(2);
     dwt_probe((struct dwt_probe_s *)&dw3000_probe_interf);
     while (!dwt_checkidlerc()) { };
-
+    
     if (dwt_initialise(DWT_DW_IDLE) == DWT_ERROR)
     {
         test_run_info((unsigned char *)"INIT FAILED     ");
         while (1) { };
     }
-
+    
     dwt_setleds(DWT_LEDS_ENABLE | DWT_LEDS_INIT_BLINK);
-
+    
     if (dwt_configure(&config_options))
     {
         test_run_info((unsigned char *)"CONFIG FAILED     ");
         while (1) { };
     }
-
+    
     if (config_options.chan == 5)
     {
         dwt_configuretxrf(&txconfig_options);
@@ -577,15 +587,6 @@ int ss_twr_responder_sts(void)
     printf("UWB initialized successfully!\n");
     
     // ============================================
-    // NOW INIT BLE (UWB is already set up)
-    // ============================================
-    
-    printf("Initializing BLE...\n");
-    ble_stack_init();
-    scan_start();
-    printf("BLE scanning active!\n");
-    
-    // ============================================
     // MAIN LOOP
     // ============================================
     
@@ -593,7 +594,6 @@ int ss_twr_responder_sts(void)
     int16_t stsQual;
     uint16_t stsStatus;
     uint8_t firstLoopFlag = 0;
-    /* Main loop */
     while (1)
     {
 
