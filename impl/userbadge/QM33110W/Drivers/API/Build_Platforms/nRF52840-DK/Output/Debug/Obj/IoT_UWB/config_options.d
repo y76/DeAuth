@@ -1,6 +1,6 @@
 Output/Debug/Obj/IoT_UWB/config_options.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Src/config_options.c \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Src/config_options.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Src/config_options.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Src/config_options.h \
  ../../Shared/dwt_uwb_driver/deca_device_api.h \
  ../../Shared/dwt_uwb_driver/deca_types.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stddef.h \

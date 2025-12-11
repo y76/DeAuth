@@ -1,5 +1,5 @@
 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o: \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/log/src/nrf_log_frontend.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/log/src/nrf_log_frontend.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
@@ -51,7 +51,7 @@ Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o: \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/log/src/nrf_log_internal.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/log/src/nrf_log_internal.h \
  ../../../../../../components/libraries/log/nrf_log_ctrl.h \
  ../../../../../../components/libraries/log/src/nrf_log_ctrl_internal.h \
  ../../../../../../components/libraries/log/nrf_log_backend_interface.h \

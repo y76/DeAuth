@@ -1,5 +1,5 @@
 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atfifo.o: \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/atomic_fifo/nrf_atfifo.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/atomic_fifo/nrf_atfifo.c \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/string.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_ConfDefaults.h \
@@ -25,7 +25,7 @@ Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atfifo.o: \
  ../../../../../../modules/nrfx/mdk/compiler_abstraction.h \
  ../../../../../../components/softdevice/s140/headers/nrf52/nrf_mbr.h \
  ../../../../../../components/softdevice/s140/headers/nrf_svc.h \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/atomic_fifo/nrf_atfifo.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/atomic_fifo/nrf_atfifo.h \
  ../config/sdk_config.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
@@ -34,7 +34,7 @@ Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atfifo.o: \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/atomic_fifo/nrf_atfifo_internal.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/atomic_fifo/nrf_atfifo_internal.h \
  ../../../../../../components/libraries/log/nrf_log.h \
  ../../../../../../components/libraries/util/sdk_common.h \
  ../../../../../../components/libraries/util/sdk_os.h \

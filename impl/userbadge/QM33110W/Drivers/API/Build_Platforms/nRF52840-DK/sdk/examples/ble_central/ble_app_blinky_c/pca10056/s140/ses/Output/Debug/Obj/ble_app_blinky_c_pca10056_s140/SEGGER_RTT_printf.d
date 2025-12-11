@@ -1,7 +1,7 @@
 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o: \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/external/segger_rtt/SEGGER_RTT_printf.c \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/external/segger_rtt/SEGGER_RTT.h \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/external/segger_rtt/SEGGER_RTT_Conf.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/external/segger_rtt/SEGGER_RTT_printf.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/external/segger_rtt/SEGGER_RTT.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/external/segger_rtt/SEGGER_RTT_Conf.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/libraries/util/app_util_platform.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \

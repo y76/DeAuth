@@ -1,7 +1,7 @@
 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_clock.o: \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/integration/nrfx/legacy/nrf_drv_clock.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/integration/nrfx/legacy/nrf_drv_clock.c \
  ../../../../../../components/libraries/util/nordic_common.h \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/integration/nrfx/legacy/nrf_drv_clock.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/integration/nrfx/legacy/nrf_drv_clock.h \
  ../../../../../../modules/nrfx/drivers/include/nrfx_clock.h \
  ../../../../../../modules/nrfx/nrfx.h \
  ../../../../../../integration/nrfx/nrfx_config.h ../config/sdk_config.h \

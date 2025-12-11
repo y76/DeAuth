@@ -1,6 +1,6 @@
 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp.o: \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/bsp/bsp.c \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/bsp/bsp.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/bsp/bsp.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/bsp/bsp.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_ConfDefaults.h \
@@ -60,7 +60,7 @@ Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp.o: \
  ../../../../../../components/boards/pca10056.h \
  ../../../../../../components/libraries/button/app_button.h \
  ../../../../../../components/libraries/util/app_error.h \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/bsp/bsp_config.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/bsp/bsp_config.h \
  ../../../../../../components/libraries/timer/app_timer.h \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \

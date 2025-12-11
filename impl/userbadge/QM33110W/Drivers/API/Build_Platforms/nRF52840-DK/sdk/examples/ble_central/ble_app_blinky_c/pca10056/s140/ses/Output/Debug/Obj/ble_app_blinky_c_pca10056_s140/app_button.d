@@ -1,5 +1,5 @@
 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o: \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/button/app_button.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/button/app_button.c \
  ../../../../../../components/libraries/util/sdk_common.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
@@ -32,7 +32,7 @@ Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o: \
  ../../../../../../components/softdevice/s140/headers/nrf_svc.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/util/nrf_assert.h \
- /home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/button/app_button.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/button/app_button.h \
  ../../../../../../components/libraries/util/app_error.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdio.h \
  ../../../../../../components/libraries/util/app_error_weak.h \

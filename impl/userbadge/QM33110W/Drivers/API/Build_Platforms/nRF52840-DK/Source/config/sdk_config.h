@@ -5528,7 +5528,7 @@
 //#define SPI0_INSTANCE_INDEX (SPI0_ENABLED)
 
 #ifndef NRFX_SPIM3_NRF52840_ANOMALY_198_WORKAROUND_ENABLED
-#define NRFX_SPIM3_NRF52840_ANOMALY_198_WORKAROUND_ENABLED 1
+#define NRFX_SPIM3_NRF52840_ANOMALY_198_WORKAROUND_ENABLED 0
 #endif
 
 // </e>
@@ -7537,7 +7537,7 @@
 // <e> NRF_LOG_ENABLED - nrf_log - Logger
 //==========================================================
 #ifndef NRF_LOG_ENABLED
-#define NRF_LOG_ENABLED 1
+#define NRF_LOG_ENABLED 0
 #endif
 // <h> Log message pool - Configuration of log message pool
 

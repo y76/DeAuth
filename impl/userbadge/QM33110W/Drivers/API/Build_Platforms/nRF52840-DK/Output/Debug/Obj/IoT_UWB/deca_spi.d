@@ -1,9 +1,9 @@
 Output/Debug/Obj/IoT_UWB/deca_spi.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/platform/deca_spi.c \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/platform/deca_spi.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/Source/platform/deca_spi.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/Source/platform/deca_spi.h \
  sdk/components/boards/boards.h sdk/modules/nrfx/hal/nrf_gpio.h \
  sdk/modules/nrfx/nrfx.h sdk/integration/nrfx/nrfx_config.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
  sdk/modules/nrfx/drivers/nrfx_common.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
@@ -33,17 +33,26 @@ Output/Debug/Obj/IoT_UWB/deca_spi.o: \
  sdk/components/libraries/util/app_util.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h \
  sdk/components/libraries/util/nordic_common.h \
+ sdk/components/softdevice/s140/headers/nrf52/nrf_mbr.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
  sdk/components/libraries/util/nordic_common.h \
  sdk/components/libraries/util/app_util_platform.h \
+ sdk/components/softdevice/s140/headers/nrf_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_nvic.h \
  sdk/components/libraries/util/nrf_assert.h \
  sdk/components/libraries/util/app_error.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdio.h \
  sdk/components/libraries/util/sdk_errors.h \
- sdk/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
  sdk/components/libraries/util/app_error_weak.h \
  sdk/modules/nrfx/soc/nrfx_coredep.h sdk/modules/nrfx/soc/nrfx_atomic.h \
  sdk/components/libraries/util/sdk_errors.h \
  sdk/components/libraries/util/sdk_resources.h \
+ sdk/components/softdevice/s140/headers/nrf_sd_def.h \
+ sdk/components/softdevice/s140/headers/nrf_soc.h \
  sdk/modules/nrfx/drivers/nrfx_errors.h sdk/components/boards/pca10056.h \
  ../../Shared/dwt_uwb_driver/deca_types.h \
  sdk/integration/nrfx/legacy/nrf_drv_spi.h \
@@ -51,7 +60,7 @@ Output/Debug/Obj/IoT_UWB/deca_spi.o: \
  sdk/modules/nrfx/hal/nrf_spim.h \
  sdk/modules/nrfx/drivers/include/nrfx_spi.h \
  sdk/modules/nrfx/hal/nrf_spi.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/platform/port.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/Source/platform/port.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/string.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/sys/types.h \
  sdk/components/boards/pca10056.h \

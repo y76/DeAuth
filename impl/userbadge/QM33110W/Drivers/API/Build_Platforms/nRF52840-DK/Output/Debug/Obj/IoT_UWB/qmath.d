@@ -1,5 +1,5 @@
 Output/Debug/Obj/IoT_UWB/qmath.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Shared/dwt_uwb_driver/lib/qmath/src/qmath.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Shared/dwt_uwb_driver/lib/qmath/src/qmath.c \
  ../../Shared/dwt_uwb_driver/lib/qmath/include/qmath.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \

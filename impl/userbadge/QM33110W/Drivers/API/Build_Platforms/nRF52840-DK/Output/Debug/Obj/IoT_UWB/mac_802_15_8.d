@@ -1,5 +1,5 @@
 Output/Debug/Obj/IoT_UWB/mac_802_15_8.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Src/MAC_802_15_8/mac_802_15_8.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Src/MAC_802_15_8/mac_802_15_8.c \
  ../../Src/MAC_802_15_8/mac_802_15_8.h \
  ../../Shared/dwt_uwb_driver/deca_device_api.h \
  ../../Shared/dwt_uwb_driver/deca_types.h \

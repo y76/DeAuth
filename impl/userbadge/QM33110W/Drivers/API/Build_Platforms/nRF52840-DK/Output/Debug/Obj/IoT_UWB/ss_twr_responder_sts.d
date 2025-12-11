@@ -37,17 +37,26 @@ Output/Debug/Obj/IoT_UWB/ss_twr_responder_sts.o: \
  sdk/components/libraries/util/app_util.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h \
  sdk/components/libraries/util/nordic_common.h \
+ sdk/components/softdevice/s140/headers/nrf52/nrf_mbr.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
  sdk/components/libraries/util/nordic_common.h \
  sdk/components/libraries/util/app_util_platform.h \
+ sdk/components/softdevice/s140/headers/nrf_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_nvic.h \
  sdk/components/libraries/util/nrf_assert.h \
  sdk/components/libraries/util/app_error.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdio.h \
  sdk/components/libraries/util/sdk_errors.h \
- sdk/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
  sdk/components/libraries/util/app_error_weak.h \
  sdk/modules/nrfx/soc/nrfx_coredep.h sdk/modules/nrfx/soc/nrfx_atomic.h \
  sdk/components/libraries/util/sdk_errors.h \
  sdk/components/libraries/util/sdk_resources.h \
+ sdk/components/softdevice/s140/headers/nrf_sd_def.h \
+ sdk/components/softdevice/s140/headers/nrf_soc.h \
  sdk/modules/nrfx/drivers/nrfx_errors.h sdk/components/boards/pca10056.h \
  ../../Shared/dwt_uwb_driver/deca_types.h \
  sdk/integration/nrfx/legacy/nrf_drv_spi.h \
@@ -72,4 +81,24 @@ Output/Debug/Obj/IoT_UWB/ss_twr_responder_sts.o: \
  sdk/modules/nrfx/hal/nrf_uarte.h \
  sdk/modules/nrfx/drivers/include/nrfx_uart.h \
  sdk/modules/nrfx/hal/nrf_uart.h \
- /opt/SEGGER/segger_embedded_studio_8.22a/include/ctype.h
+ /opt/SEGGER/segger_embedded_studio_8.22a/include/ctype.h \
+ sdk/components/softdevice/common/nrf_sdh.h \
+ sdk/components/libraries/experimental_section_vars/nrf_section_iter.h \
+ sdk/components/libraries/experimental_section_vars/nrf_section.h \
+ sdk/components/softdevice/common/nrf_sdh_ble.h \
+ sdk/components/softdevice/s140/headers/ble.h \
+ sdk/components/softdevice/s140/headers/ble_err.h \
+ sdk/components/softdevice/s140/headers/ble_gap.h \
+ sdk/components/softdevice/s140/headers/ble_hci.h \
+ sdk/components/softdevice/s140/headers/ble_ranges.h \
+ sdk/components/softdevice/s140/headers/ble_types.h \
+ sdk/components/softdevice/s140/headers/ble_l2cap.h \
+ sdk/components/softdevice/s140/headers/ble_gatt.h \
+ sdk/components/softdevice/s140/headers/ble_gattc.h \
+ sdk/components/softdevice/s140/headers/ble_gatts.h \
+ sdk/components/softdevice/common/nrf_sdh_soc.h \
+ sdk/components/libraries/util/sdk_common.h \
+ sdk/components/libraries/util/sdk_os.h \
+ sdk/components/libraries/util/app_util.h \
+ sdk/components/libraries/util/sdk_macros.h \
+ sdk/components/softdevice/s140/headers/ble_gap.h

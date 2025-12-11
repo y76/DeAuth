@@ -1,6 +1,6 @@
 Output/Debug/Obj/IoT_UWB/nrf_memobj.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/memobj/nrf_memobj.c \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/memobj/nrf_memobj.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/memobj/nrf_memobj.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/memobj/nrf_memobj.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_ConfDefaults.h \
@@ -8,9 +8,9 @@ Output/Debug/Obj/IoT_UWB/nrf_memobj.o: \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Arm_Conf.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdlib.h \
  sdk/components/libraries/util/sdk_errors.h \
- sdk/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
  sdk/components/libraries/balloc/nrf_balloc.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
  sdk/components/libraries/util/app_util_platform.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h sdk/modules/nrfx/mdk/nrf.h \
  sdk/modules/nrfx/mdk/nrf52840.h \
@@ -24,6 +24,11 @@ Output/Debug/Obj/IoT_UWB/nrf_memobj.o: \
  sdk/modules/nrfx/mdk/nrf51_to_nrf52840.h \
  sdk/modules/nrfx/mdk/nrf52_to_nrf52840.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h \
+ sdk/components/softdevice/s140/headers/nrf_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_nvic.h \
  sdk/components/libraries/util/nrf_assert.h \
  sdk/components/libraries/util/app_error.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdio.h \
@@ -33,6 +38,8 @@ Output/Debug/Obj/IoT_UWB/nrf_memobj.o: \
  sdk/components/libraries/util/app_error_weak.h \
  sdk/components/libraries/util/app_util.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stddef.h \
+ sdk/components/softdevice/s140/headers/nrf52/nrf_mbr.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
  sdk/components/libraries/log/nrf_log_instance.h \
  sdk/components/libraries/experimental_section_vars/nrf_section.h \
  sdk/components/libraries/util/nordic_common.h \

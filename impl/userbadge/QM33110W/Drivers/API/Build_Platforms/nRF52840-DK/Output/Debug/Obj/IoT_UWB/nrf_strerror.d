@@ -1,5 +1,5 @@
 Output/Debug/Obj/IoT_UWB/nrf_strerror.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/strerror/nrf_strerror.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/strerror/nrf_strerror.c \
  sdk/components/libraries/util/sdk_common.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
@@ -8,12 +8,12 @@ Output/Debug/Obj/IoT_UWB/nrf_strerror.o: \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_Arm_Conf.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdbool.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/string.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
  sdk/components/libraries/util/nordic_common.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h \
  sdk/components/libraries/util/sdk_os.h \
  sdk/components/libraries/util/sdk_errors.h \
- sdk/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
  sdk/components/libraries/util/app_util.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stddef.h \
  sdk/modules/nrfx/mdk/nrf.h sdk/modules/nrfx/mdk/nrf52840.h \
@@ -27,7 +27,9 @@ Output/Debug/Obj/IoT_UWB/nrf_strerror.o: \
  sdk/modules/nrfx/mdk/nrf51_to_nrf52840.h \
  sdk/modules/nrfx/mdk/nrf52_to_nrf52840.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h \
+ sdk/components/softdevice/s140/headers/nrf52/nrf_mbr.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
  sdk/components/libraries/util/sdk_macros.h \
  sdk/components/libraries/util/nrf_assert.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/strerror/nrf_strerror.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/strerror/nrf_strerror.h \
  sdk/components/libraries/util/sdk_errors.h

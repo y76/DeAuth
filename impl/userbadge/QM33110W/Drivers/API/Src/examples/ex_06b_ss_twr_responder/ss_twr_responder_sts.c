@@ -38,7 +38,169 @@
 #include <string.h>
 #include <ctype.h>
 
+// Add these includes after your existing includes
+#include "nrf_sdh.h"
+#include "nrf_sdh_ble.h"
+#include "nrf_sdh_soc.h"
+#include "ble.h"
+#include "ble_gap.h"
 #if defined(TEST_SS_TWR_RESPONDER_STS)
+
+// BLE Configuration
+#define APP_BLE_CONN_CFG_TAG    1
+#define APP_BLE_OBSERVER_PRIO   3
+#define APP_SOC_OBSERVER_PRIO   1
+
+// Scan buffer
+static uint8_t m_scan_buffer_data[BLE_GAP_SCAN_BUFFER_EXTENDED_MIN];
+static ble_data_t m_scan_buffer = {
+    .p_data = m_scan_buffer_data,
+    .len = BLE_GAP_SCAN_BUFFER_EXTENDED_MIN
+};
+
+// BLE event handler - called when advertisements are received
+static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
+{
+    switch (p_ble_evt->header.evt_id)
+    {
+        case BLE_GAP_EVT_ADV_REPORT:
+        {
+            ble_gap_evt_adv_report_t const * p_adv = &p_ble_evt->evt.gap_evt.params.adv_report;
+            
+            // Check if advertisement data contains Running Speed and Cadence Service UUID
+            bool has_rscs = false;
+            uint16_t rscs_uuid = 0x1814;  // Running Speed and Cadence Service UUID
+            
+            // Parse advertisement data for service UUIDs
+            uint16_t offset = 0;
+            while (offset < p_adv->data.len)
+            {
+                uint8_t field_length = p_adv->data.p_data[offset];
+                uint8_t field_type = p_adv->data.p_data[offset + 1];
+                
+                // Check for Complete or Incomplete List of 16-bit Service UUIDs
+                if (field_type == 0x02 || field_type == 0x03)  
+                {
+                    // Check each UUID in the list
+                    for (uint16_t i = 2; i < field_length + 1; i += 2)
+                    {
+                        uint16_t uuid = (p_adv->data.p_data[offset + i + 1] << 8) | 
+                                       p_adv->data.p_data[offset + i];
+                        if (uuid == rscs_uuid)
+                        {
+                            has_rscs = true;
+                            break;
+                        }
+                    }
+                }
+                
+                offset += field_length + 1;
+                
+                if (offset >= p_adv->data.len || field_length == 0)
+                    break;
+            }
+            
+            // Only print if Running Speed and Cadence Service is found
+            if (has_rscs)
+            {
+                printf("🏃 RSCS Device Found! RSSI: %d dBm, Addr: %02X:%02X:%02X:%02X:%02X:%02X\n",
+                       p_adv->rssi,
+                       p_adv->peer_addr.addr[5], p_adv->peer_addr.addr[4],
+                       p_adv->peer_addr.addr[3], p_adv->peer_addr.addr[2],
+                       p_adv->peer_addr.addr[1], p_adv->peer_addr.addr[0]);
+                       // STOP BLE SCANNING - we found our device!
+    printf("Stopping BLE scan...\n");
+    ret_code_t err_code = sd_ble_gap_scan_stop();
+    if (err_code == NRF_SUCCESS) {
+        printf("BLE scan stopped successfully!\n");
+    } else {
+        printf("BLE scan stop failed: 0x%X\n", err_code);
+    }
+    
+    // TODO: Trigger UWB ranging here
+    // rangingComplete = 0;  // Wake up UWB
+    
+    break;  // Exit the switch case
+            }
+            
+            // Continue scanning
+            ret_code_t err_code = sd_ble_gap_scan_start(NULL, &m_scan_buffer);
+            if (err_code != NRF_SUCCESS && err_code != NRF_ERROR_BUSY)
+            {
+                printf("Scan restart failed: 0x%X\n", err_code);
+            }
+            break;
+        }
+        
+        case BLE_GAP_EVT_TIMEOUT:
+            printf("BLE scan timeout\n");
+            break;
+            
+        default:
+            break;
+    }
+}
+
+// SoC event handler
+static void soc_evt_handler(uint32_t evt_id, void * p_context)
+{
+    // Handle SoC events if needed
+}
+
+static void ble_stack_init(void)
+{
+    ret_code_t err_code;
+    
+    // Now enable fresh
+    printf("Enabling SoftDevice...\n");
+    err_code = nrf_sdh_enable_request();
+    if (err_code != NRF_SUCCESS) {
+        printf("SoftDevice enable failed: 0x%X\n", err_code);
+        return;
+    }
+    
+    // Configure BLE stack
+    uint32_t ram_start = 0;
+    err_code = nrf_sdh_ble_default_cfg_set(APP_BLE_CONN_CFG_TAG, &ram_start);
+    if (err_code != NRF_SUCCESS) {
+        printf("BLE config failed: 0x%X\n", err_code);
+        return;
+    }
+    
+    // Enable BLE stack
+    err_code = nrf_sdh_ble_enable(&ram_start);
+    if (err_code != NRF_SUCCESS) {
+        printf("BLE enable failed: 0x%X\n", err_code);
+        return;
+    }
+    
+    printf("BLE stack initialized! RAM start: 0x%08lX\n", ram_start);
+}
+// Register BLE and SoC observers (add these after ble_stack_init function)
+NRF_SDH_BLE_OBSERVER(m_ble_observer, APP_BLE_OBSERVER_PRIO, ble_evt_handler, NULL);
+NRF_SDH_SOC_OBSERVER(m_soc_observer, APP_SOC_OBSERVER_PRIO, soc_evt_handler, NULL);
+
+// Start BLE scanning
+static void scan_start(void)
+{
+    ret_code_t err_code;
+    
+    ble_gap_scan_params_t scan_params = {
+        .active        = 0,
+        .interval      = 160,
+        .window        = 80,
+        .timeout       = 0,
+        .scan_phys     = BLE_GAP_PHY_1MBPS,
+        .filter_policy = BLE_GAP_SCAN_FP_ACCEPT_ALL,
+    };
+    
+    err_code = sd_ble_gap_scan_start(&scan_params, &m_scan_buffer);
+    if (err_code == NRF_SUCCESS) {
+        printf("BLE scanning started!\n");
+    } else {
+        printf("Scan start failed: 0x%X\n", err_code);
+    }
+}
 
 extern void test_run_info(unsigned char *data);
 
@@ -361,32 +523,28 @@ void uart_init(void)
  */
 int ss_twr_responder_sts(void)
 {
-    uart_init();
-    int goodSts = 0;           /* Used for checking STS quality in received signal */
-    int16_t stsQual;           /* This will contain STS quality index */
-    uint16_t stsStatus;        /* Used to check for good STS status (no errors). */
-    uint8_t firstLoopFlag = 0; /* Used to track if the program has gone through the first loop or not. */
+   uart_init();
+    printf("1. UART init done\n");
     
-    /* Display application name on UART. */
+    // ============================================
+    // INIT UWB FIRST (before SoftDevice locks things)
+    // ============================================
+    
+    printf("Initializing UWB BEFORE BLE...\n");
+    
     test_run_info((unsigned char *)APP_NAME);
 
-    /* Configure SPI rate, DW3000 supports up to 38 MHz */
 #ifdef CONFIG_SPI_FAST_RATE
     port_set_dw_ic_spi_fastrate();
-#endif /* CONFIG_SPI_FAST_RATE */
+#endif
 #ifdef CONFIG_SPI_SLOW_RATE
     port_set_dw_ic_spi_slowrate();
-#endif /* CONFIG_SPI_SLOW_RATE */
+#endif
 
-    /* Reset DW IC */
-    reset_DWIC(); /* Target specific drive of RSTn line into DW IC low for a period. */
-
-    Sleep(2); // Time needed for DW3000 to start up (transition from INIT_RC to IDLE_RC)
-
-    /* Probe for the correct device driver. */
+    reset_DWIC();
+    Sleep(2);
     dwt_probe((struct dwt_probe_s *)&dw3000_probe_interf);
-
-    while (!dwt_checkidlerc()) /* Need to make sure DW IC is in IDLE_RC before proceeding */ { };
+    while (!dwt_checkidlerc()) { };
 
     if (dwt_initialise(DWT_DW_IDLE) == DWT_ERROR)
     {
@@ -394,19 +552,14 @@ int ss_twr_responder_sts(void)
         while (1) { };
     }
 
-    /* Enabling LEDs here for debug so that for each TX the D1 LED will flash on DW3000 red eval-shield boards.
-     * Note, in real low power applications the LEDs should not be used. */
     dwt_setleds(DWT_LEDS_ENABLE | DWT_LEDS_INIT_BLINK);
 
-    /* Configure DW IC. See NOTE 12 below. */
-    /* if the dwt_configure returns DWT_ERROR either the PLL or RX calibration has failed the host should reset the device */
     if (dwt_configure(&config_options))
     {
         test_run_info((unsigned char *)"CONFIG FAILED     ");
         while (1) { };
     }
 
-    /* Configure the TX spectrum parameters (power, PG delay and PG count) */
     if (config_options.chan == 5)
     {
         dwt_configuretxrf(&txconfig_options);
@@ -416,30 +569,42 @@ int ss_twr_responder_sts(void)
         dwt_configuretxrf(&txconfig_options_ch9);
     }
     
-    /* Configure sleep mode for UWB chip */
     dwt_configuresleep(DWT_CONFIG | DWT_PGFCAL, DWT_PRES_SLEEP | DWT_WAKE_CSN | DWT_WAKE_WUP | DWT_SLP_EN);
-
-    /* Apply default antenna delay value. See NOTE 2 below. */
     dwt_setrxantennadelay(RX_ANT_DLY);
     dwt_settxantennadelay(TX_ANT_DLY);
-
-    /* Next can enable TX/RX states output on GPIOs 5 and 6 to help diagnostics, and also TX/RX LEDs */
     dwt_setlnapamode(DWT_LNA_ENABLE | DWT_PA_ENABLE);
-
-    /* Loop forever responding to ranging requests. */
+    
+    printf("UWB initialized successfully!\n");
+    
+    // ============================================
+    // NOW INIT BLE (UWB is already set up)
+    // ============================================
+    
+    printf("Initializing BLE...\n");
+    ble_stack_init();
+    scan_start();
+    printf("BLE scanning active!\n");
+    
+    // ============================================
+    // MAIN LOOP
+    // ============================================
+    
+    int goodSts = 0;
+    int16_t stsQual;
+    uint16_t stsStatus;
+    uint8_t firstLoopFlag = 0;
+    /* Main loop */
     while (1)
     {
+
         while (!rangingComplete)
         {
-            /*
-             * Set STS encryption key and IV (nonce).
-             * See NOTE 11 below.
-             */
+            // CRITICAL SECTION START - Protect from SoftDevice interrupts
+            //sd_nvic_critical_region_enter(&is_nested_critical_region);
+            
+            /* Set STS encryption key and IV */
             if (!firstLoopFlag)
             {
-                /*
-                 * On first loop, configure the STS key & IV, then load them.
-                 */
                 dwt_configurestskey(&cp_key);
                 dwt_configurestsiv(&cp_iv);
                 dwt_configurestsloadiv();
@@ -447,90 +612,76 @@ int ss_twr_responder_sts(void)
             }
             else
             {
-                /*
-                 * On subsequent loops, we only need to reload the lower 32 bits of STS IV.
-                 */
                 dwt_configurestsiv(&cp_iv);
                 dwt_configurestsloadiv();
             }
 
             /* Activate reception immediately. */
             dwt_rxenable(DWT_START_RX_IMMEDIATE);
+            
+            // CRITICAL SECTION END - Allow SoftDevice to run
+          //  sd_nvic_critical_region_exit(is_nested_critical_region);
 
-            /* Poll for reception of a frame or error/timeout. See NOTE 6 below. */
+            /* Poll for reception of a frame or error/timeout. */
             waitforsysstatus(&status_reg, NULL, (DWT_INT_RXFCG_BIT_MASK | SYS_STATUS_ALL_RX_TO | SYS_STATUS_ALL_RX_ERR), 0);
 
-            /*
-             * Need to check the STS has been received and is good.
-             */
+            /* Check STS quality */
             goodSts = dwt_readstsquality(&stsQual, 0);
 
-            /*
-             * Check for a good frame with good STS count.
-             */
+            /* Check for a good frame with good STS count. */
             if ((status_reg & DWT_INT_RXFCG_BIT_MASK) && (goodSts >= 0) && (dwt_readstsstatus(&stsStatus, 0) == DWT_SUCCESS))
             {
                 uint16_t frame_len;
 
-                /* Clear good RX frame event in the DW IC status register. */
                 dwt_writesysstatuslo(DWT_INT_RXFCG_BIT_MASK);
 
-                /* A frame has been received, read it into the local buffer. */
                 frame_len = dwt_getframelength(0);
                 if (frame_len <= sizeof(rx_buffer))
                 {
                     dwt_readrxdata(rx_buffer, frame_len, 0);
 
-                    /* Check that the frame is a poll sent by "SS TWR initiator STS" example.
-                     * As the sequence number field of the frame is not relevant, it is cleared to simplify the validation of the frame. */
                     rx_buffer[ALL_MSG_SN_IDX] = 0;
                     if (memcmp(rx_buffer, rx_poll_msg, ALL_MSG_COMMON_LEN) == 0)
                     {
                         uint32_t resp_tx_time;
                         int ret;
 
-                        /* Retrieve poll reception timestamp. */
+                        // CRITICAL SECTION START - Protect TX timing
+                     //   sd_nvic_critical_region_enter(&is_nested_critical_region);
+                        
                         poll_rx_ts = get_rx_timestamp_u64();
 
-                        resp_tx_time = (poll_rx_ts                                               /* Received timestamp value */
-                                           + ((POLL_RX_TO_RESP_TX_DLY_UUS                        /* Set delay time */
-                                                  + get_rx_delay_time_data_rate()                /* Added delay time for data rate set */
-                                                  + get_rx_delay_time_txpreamble()               /* Added delay for TX preamble length */
-                                                  + ((1 << (config_options.stsLength + 2)) * 8)) /* Added delay for STS length */
+                        resp_tx_time = (poll_rx_ts
+                                           + ((POLL_RX_TO_RESP_TX_DLY_UUS
+                                                  + get_rx_delay_time_data_rate()
+                                                  + get_rx_delay_time_txpreamble()
+                                                  + ((1 << (config_options.stsLength + 2)) * 8))
                                                * UUS_TO_DWT_TIME))
-                                       >> 8; /* Converted to time units for chip */
+                                       >> 8;
                         dwt_setdelayedtrxtime(resp_tx_time);
 
-                        /* Response TX timestamp is the transmission time we programmed plus the antenna delay. */
                         resp_tx_ts = (((uint64_t)(resp_tx_time & 0xFFFFFFFEUL)) << 8) + TX_ANT_DLY;
 
-                        /* Write all timestamps in the final message. See NOTE 8 below. */
                         resp_msg_set_ts(&tx_resp_msg[RESP_MSG_POLL_RX_TS_IDX], poll_rx_ts);
                         resp_msg_set_ts(&tx_resp_msg[RESP_MSG_RESP_TX_TS_IDX], resp_tx_ts);
 
-                        /* Write and send the response message. See NOTE 9 below. */
                         tx_resp_msg[ALL_MSG_SN_IDX] = frame_seq_nb;
                         dwt_writesysstatuslo(DWT_INT_TXFRS_BIT_MASK);
-                        dwt_writetxdata(sizeof(tx_resp_msg), tx_resp_msg, 0); /* Zero offset in TX buffer. */
-                        dwt_writetxfctrl(sizeof(tx_resp_msg), 0, 1);          /* Zero offset in TX buffer, ranging. */
+                        dwt_writetxdata(sizeof(tx_resp_msg), tx_resp_msg, 0);
+                        dwt_writetxfctrl(sizeof(tx_resp_msg), 0, 1);
                         ret = dwt_starttx(DWT_START_TX_DELAYED);
+                        
+                        // CRITICAL SECTION END
+                   //     sd_nvic_critical_region_exit(is_nested_critical_region);
 
-                        /* If dwt_starttx() returns an error, abandon this ranging exchange and proceed to the next one. See NOTE 10 below. */
                         if (ret == DWT_SUCCESS)
                         {
-                            /* Poll DW IC until TX frame sent event set. See NOTE 6 below. */
                             waitforsysstatus(NULL, NULL, DWT_INT_TXFRS_BIT_MASK, 0);
-
-                            /* Clear TXFRS event. */
                             dwt_writesysstatuslo(DWT_INT_TXFRS_BIT_MASK);
-
-                            /* Increment frame sequence number after transmission of the poll message (modulo 256). */
                             frame_seq_nb++;
                             rangingComplete = 1;
                             dwt_setleds(DWT_LEDS_DISABLE);
-                            
-                            /* POWER OPTIMIZATION: Put UWB chip to sleep (changed from DWT_DW_IDLE to 0) */
-                            dwt_entersleep(DWT_DW_IDLE);  // Proper sleep mode instead of IDLE
+                            dwt_entersleep(0);
                             printf("UWB module in sleep mode.\n");
                         }
                     }
@@ -556,17 +707,13 @@ int ss_twr_responder_sts(void)
                 {
                     errors[CP_QUAL_ERR_IDX] += 1;
                 }
-                /* Clear RX error events in the DW IC status register. */
                 dwt_writesysstatuslo(SYS_STATUS_ALL_RX_ERR);
             }
         }
         
-        /* POWER OPTIMIZATION: Sleep CPU while waiting for next UART DeAuth message
-         * __WFE() puts CPU to sleep, UART interrupt will wake it up
-         * This reduces idle power from 7mA to ~3mA (2.5mA UART + 0.5mA sleeping CPU)
-         */
+        /* CPU sleep while waiting for next UART DeAuth message */
         while (rangingComplete) {
-            __WFE();  // Wait For Event - CPU enters sleep, wakes on any interrupt
+            __WFE();
         }
     }
 }

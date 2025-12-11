@@ -2,18 +2,18 @@ Archive member included to satisfy reference by file (symbol)
 
 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(intasmops_arm.o)
                               Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp.o (__aeabi_uldivmod)
+/opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+                              Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o (vsnprintf)
 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfprintf_long.o)
                               (__SEGGER_RTL_vfprintf_long)
 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfscanf_long.o)
                               (__SEGGER_RTL_vfscanf_long)
+/opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+                              /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o) (fwrite)
 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(utilops.o)
                               /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfscanf_long.o) (__SEGGER_RTL_digit)
 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(floatasmops_arm.o)
                               /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(utilops.o) (__aeabi_dmul)
-/opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
-                              /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfprintf_long.o) (__SEGGER_RTL_putc)
-/opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
-                              /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o) (fwrite)
 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(errno.o)
                               /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o) (__aeabi_errno_addr)
 /opt/SEGGER/segger_embedded_studio_8.22a/lib/heapops_disable_interrupts_locking_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(heapops.o)
@@ -142,8 +142,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x7ac Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
  .debug_macro   0x00000000       0x16 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
  .debug_macro   0x00000000       0x55 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
- .debug_line    0x00000000      0x40a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
- .debug_str     0x00000000    0x8b388 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
+ .debug_line    0x00000000      0x40c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
+ .debug_str     0x00000000    0x8b38c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
  .debug_frame   0x00000000       0x20 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_rtt.o
  .ARM.attributes
@@ -1916,8 +1916,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x88 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
  .debug_macro   0x00000000       0x3a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
  .debug_macro   0x00000000       0x8c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
- .debug_line    0x00000000      0xa6b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
- .debug_str     0x00000000    0x8d697 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
+ .debug_line    0x00000000      0xa6d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
+ .debug_str     0x00000000    0x8d69b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
  .debug_frame   0x00000000      0x400 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_scheduler.o
  .ARM.attributes
@@ -2621,8 +2621,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x7ac Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
  .debug_macro   0x00000000       0x16 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
  .debug_macro   0x00000000       0x55 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
- .debug_line    0x00000000      0x411 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
- .debug_str     0x00000000    0x8b38f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
+ .debug_line    0x00000000      0x413 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
+ .debug_str     0x00000000    0x8b393 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
  .debug_frame   0x00000000       0x20 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/hardfault_implementation.o
  .ARM.attributes
@@ -2692,8 +2692,8 @@ Discarded input sections
  .debug_macro   0x00000000       0xad Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
  .debug_macro   0x00000000      0x16d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
  .debug_macro   0x00000000       0x49 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
- .debug_line    0x00000000      0x344 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
- .debug_str     0x00000000    0x7a840 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
+ .debug_line    0x00000000      0x346 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
+ .debug_str     0x00000000    0x7a844 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
  .debug_frame   0x00000000       0x2c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_assert.o
  .ARM.attributes
@@ -4068,7 +4068,7 @@ Discarded input sections
                 0x00000000        0x8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
  .text.sd_protected_register_write
                 0x00000000        0x8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
- .rodata        0x00000000       0x85 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
+ .rodata        0x00000000       0x87 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
  .text.nrf_ringbuf_alloc
                 0x00000000      0x100 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
  .text.nrf_ringbuf_put
@@ -6040,8 +6040,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x40 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
  .debug_macro   0x00000000       0x20 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
  .debug_macro   0x00000000       0x42 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
- .debug_line    0x00000000      0xc20 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
- .debug_str     0x00000000    0x948f9 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
+ .debug_line    0x00000000      0xc22 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
+ .debug_str     0x00000000    0x948fd Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
  .debug_frame   0x00000000      0x594 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_atomic.o
  .ARM.attributes
@@ -8626,12 +8626,14 @@ Discarded input sections
  .debug_macro   0x00000000     0x2106 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
  .debug_macro   0x00000000       0x47 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
  .debug_macro   0x00000000      0x115 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
- .debug_line    0x00000000      0xfcb Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
- .debug_str     0x00000000    0x85daa Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
+ .debug_line    0x00000000      0xfcd Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
+ .debug_str     0x00000000    0x85dae Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
  .debug_frame   0x00000000      0x644 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
  .ARM.attributes
                 0x00000000       0x36 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT.o
+ .group         0x00000000        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .group         0x00000000        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .group         0x00000000        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .group         0x00000000        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .group         0x00000000        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
@@ -8764,16 +8766,22 @@ Discarded input sections
                 0x00000000        0x8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .text.sd_protected_register_write
                 0x00000000        0x8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
- .debug_info    0x00000000      0xd51 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
- .debug_abbrev  0x00000000      0x14d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .text.printf   0x00000000       0x4c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .text.puts     0x00000000       0x18 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .text.__putchar
+                0x00000000       0x1e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .text.__getchar
+                0x00000000        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_info    0x00000000      0xf4c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_abbrev  0x00000000      0x23b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_pubnames
-                0x00000000      0xa4f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+                0x00000000      0xad4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_pubtypes
-                0x00000000      0x22d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+                0x00000000      0x276 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_aranges
-                0x00000000      0x198 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
- .debug_ranges  0x00000000      0x188 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
- .debug_macro   0x00000000      0x19f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+                0x00000000      0x1b8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_ranges  0x00000000      0x1a8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_macro   0x00000000      0x1d1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_macro   0x00000000      0xb92 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_macro   0x00000000     0x2106 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_macro   0x00000000      0x16d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
@@ -8807,10 +8815,12 @@ Discarded input sections
  .debug_macro   0x00000000       0x8c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_macro   0x00000000       0x47 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .debug_macro   0x00000000      0x115 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
- .debug_line    0x00000000      0x7de Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
- .debug_str     0x00000000    0x85789 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_macro   0x00000000       0x22 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_macro   0x00000000       0x7c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_line    0x00000000      0x897 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_str     0x00000000    0x85ae3 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
- .debug_frame   0x00000000      0x310 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
+ .debug_frame   0x00000000      0x394 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .ARM.attributes
                 0x00000000       0x36 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_Syscalls_SES.o
  .group         0x00000000        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
@@ -9004,8 +9014,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x115 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
  .debug_macro   0x00000000       0x28 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
  .debug_macro   0x00000000       0x22 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
- .debug_line    0x00000000      0xb77 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
- .debug_str     0x00000000    0x85a6c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
+ .debug_line    0x00000000      0xb79 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
+ .debug_str     0x00000000    0x85a70 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
  .debug_frame   0x00000000      0x3b4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/SEGGER_RTT_printf.o
  .ARM.attributes
@@ -9739,8 +9749,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x9a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
  .debug_macro   0x00000000       0x11 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
  .debug_macro   0x00000000       0x1c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
- .debug_line    0x00000000     0x18bb Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
- .debug_str     0x00000000    0x9889a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
+ .debug_line    0x00000000     0x18bd Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
+ .debug_str     0x00000000    0x9889e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
  .debug_frame   0x00000000      0xb00 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advertising.o
  .ARM.attributes
@@ -10781,7 +10791,7 @@ Discarded input sections
                 0x00000000       0x2c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .text.ble_srv_is_indication_enabled
                 0x00000000       0x2c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
- .rodata        0x00000000       0x81 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
+ .rodata        0x00000000       0x83 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .text.ble_srv_report_ref_encode
                 0x00000000       0x6c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .text.ble_srv_ascii_to_utf8
@@ -10842,8 +10852,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x58 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .debug_macro   0x00000000       0xad Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .debug_macro   0x00000000       0x49 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
- .debug_line    0x00000000      0xde2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
- .debug_str     0x00000000    0x8b197 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
+ .debug_line    0x00000000      0xde4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
+ .debug_str     0x00000000    0x8b19b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .debug_frame   0x00000000      0x63c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_srv_common.o
  .ARM.attributes
@@ -11820,8 +11830,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
  .debug_macro   0x00000000       0x1c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
  .debug_macro   0x00000000      0x26f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
- .debug_line    0x00000000      0x520 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
- .debug_str     0x00000000     0x7bb5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
+ .debug_line    0x00000000      0x522 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
+ .debug_str     0x00000000     0x7bb9 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
  .comment       0x00000000       0x3e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
  .debug_frame   0x00000000       0xe0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/utf.o
  .ARM.attributes
@@ -12948,6 +12958,80 @@ Discarded input sections
                 0x00000000        0xc /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(intasmops_arm.o)
  .ARM.attributes
                 0x00000000       0x20 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(intasmops_arm.o)
+ .text.libc     0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_putc
+                0x00000000       0x84 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_prin_flush
+                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_print_padding
+                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_pre_padding
+                0x00000000       0x12 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_compute_wide_metrics
+                0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_print_wide_string
+                0x00000000       0x4c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_init_prin
+                0x00000000       0x18 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_init_prin_l
+                0x00000000       0x12 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.snprintf
+                0x00000000       0x30 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.snprintf_l
+                0x00000000       0x32 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.sprintf
+                0x00000000       0x34 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.sprintf_l
+                0x00000000       0x3a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vsprintf
+                0x00000000       0x26 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vsprintf_l
+                0x00000000       0x32 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vsnprintf
+                0x00000000       0x28 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vsnprintf_l
+                0x00000000       0x2e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vfprintf
+                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vfprintf_l
+                0x00000000       0x6c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_stream_write
+                0x00000000        0xa /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.fprintf
+                0x00000000       0x18 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.fprintf_l
+                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vprintf
+                0x00000000       0x12 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vprintf_l
+                0x00000000       0x14 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.printf
+                0x00000000       0x2a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.printf_l
+                0x00000000       0x28 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vasprintf_l
+                0x00000000       0x68 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.__SEGGER_RTL_alloc_write
+                0x00000000       0x4c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.vasprintf
+                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.asprintf
+                0x00000000       0x18 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .text.libc.asprintf_l
+                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .rodata.libc.__SEGGER_RTL_hex_uc
+                0x00000000       0x10 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .rodata.libc.__SEGGER_RTL_hex_lc
+                0x00000000       0x10 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .rodata.libc.__SEGGER_RTL_ipow10
+                0x00000000       0xa0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .rodata.libc..L.str
+                0x00000000        0x1 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .comment       0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .note.GNU-stack
+                0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
  .text.libc     0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfprintf_long.o)
  .text.libc.__SEGGER_RTL_vfprintf_long
                 0x00000000      0x50e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfprintf_long.o)
@@ -12972,6 +13056,82 @@ Discarded input sections
                 0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfscanf_long.o)
  .ARM.attributes
                 0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(__SEGGER_RTL_vfscanf_long.o)
+ .text.libc     0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.ungetc
+                0x00000000        0xa /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fgetc
+                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.getchar
+                0x00000000        0xe /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.getc
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fgets
+                0x00000000       0x46 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.gets
+                0x00000000       0x26 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.putchar
+                0x00000000        0xe /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fputc
+                0x00000000       0x22 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.putc
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.puts
+                0x00000000       0x32 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fputs
+                0x00000000       0x22 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fwrite
+                0x00000000       0x2e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.clearerr
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fopen
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fdopen
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fclose
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.ferror
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.feof
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fflush
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.rewind
+                0x00000000        0x8 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fseek
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fread
+                0x00000000       0x38 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fgetpos
+                0x00000000       0x16 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.fsetpos
+                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.ftell
+                0x00000000       0x1e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.freopen
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.tmpnam
+                0x00000000        0x8 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.tmpfile
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.rename
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.remove
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.perror
+                0x00000000       0x4a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.setvbuf
+                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .text.libc.setbuf
+                0x00000000        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .rodata.libc..L.str
+                0x00000000        0x3 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .rodata.libc..L.str.1
+                0x00000000        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .comment       0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .note.GNU-stack
+                0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
  .text.libc     0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(utilops.o)
  .text.libc.__SEGGER_RTL_pow10
                 0x00000000       0x70 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(utilops.o)
@@ -13093,156 +13253,6 @@ Discarded input sections
                 0x00000000       0x4c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(floatasmops_arm.o)
  .ARM.attributes
                 0x00000000       0x20 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(floatasmops_arm.o)
- .text.libc     0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_putc
-                0x00000000       0x84 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_prin_flush
-                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_print_padding
-                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_pre_padding
-                0x00000000       0x12 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_compute_wide_metrics
-                0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_print_wide_string
-                0x00000000       0x4c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_init_prin
-                0x00000000       0x18 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_init_prin_l
-                0x00000000       0x12 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.snprintf
-                0x00000000       0x30 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.snprintf_l
-                0x00000000       0x32 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.sprintf
-                0x00000000       0x34 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.sprintf_l
-                0x00000000       0x3a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vsprintf
-                0x00000000       0x26 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vsprintf_l
-                0x00000000       0x32 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vsnprintf
-                0x00000000       0x28 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vsnprintf_l
-                0x00000000       0x2e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vfprintf
-                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vfprintf_l
-                0x00000000       0x6c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_stream_write
-                0x00000000        0xa /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.fprintf
-                0x00000000       0x18 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.fprintf_l
-                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vprintf
-                0x00000000       0x12 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vprintf_l
-                0x00000000       0x14 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.printf
-                0x00000000       0x2a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.printf_l
-                0x00000000       0x28 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vasprintf_l
-                0x00000000       0x68 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.__SEGGER_RTL_alloc_write
-                0x00000000       0x4c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.vasprintf
-                0x00000000       0x1c /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.asprintf
-                0x00000000       0x18 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc.asprintf_l
-                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .rodata.libc.__SEGGER_RTL_hex_uc
-                0x00000000       0x10 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .rodata.libc.__SEGGER_RTL_hex_lc
-                0x00000000       0x10 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .rodata.libc.__SEGGER_RTL_ipow10
-                0x00000000       0xa0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .rodata.libc..L.str
-                0x00000000        0x1 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .comment       0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .note.GNU-stack
-                0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .ARM.attributes
-                0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(prinops.o)
- .text.libc     0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.ungetc
-                0x00000000        0xa /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fgetc
-                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.getchar
-                0x00000000        0xe /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.getc
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fgets
-                0x00000000       0x46 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.gets
-                0x00000000       0x26 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.putchar
-                0x00000000        0xe /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fputc
-                0x00000000       0x22 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.putc
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.puts
-                0x00000000       0x32 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fputs
-                0x00000000       0x22 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fwrite
-                0x00000000       0x2e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.clearerr
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fopen
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fdopen
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fclose
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.ferror
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.feof
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fflush
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.rewind
-                0x00000000        0x8 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fseek
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fread
-                0x00000000       0x38 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fgetpos
-                0x00000000       0x16 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.fsetpos
-                0x00000000       0x1a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.ftell
-                0x00000000       0x1e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.freopen
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.tmpnam
-                0x00000000        0x8 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.tmpfile
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.rename
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.remove
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.perror
-                0x00000000       0x4a /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.setvbuf
-                0x00000000        0x4 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .text.libc.setbuf
-                0x00000000        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .rodata.libc..L.str
-                0x00000000        0x3 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .rodata.libc..L.str.1
-                0x00000000        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .comment       0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .note.GNU-stack
-                0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
- .ARM.attributes
-                0x00000000       0x3e /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(fileops.o)
  .text.libc     0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(errno.o)
  .text.libc.__aeabi_errno_addr
                 0x00000000       0x10 /opt/SEGGER/segger_embedded_studio_8.22a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(errno.o)
@@ -16730,190 +16740,191 @@ Linker script and memory map
                 0x00000001                        . = ASSERT (((__ctors_start__ == __ctors_end__) || ((__ctors_end__ - __FLASH_segment_start__) <= __FLASH_segment_size__)), error: .ctors is too large to fit in FLASH memory segment)
                 0x00032f70                        __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
 
-.rodata         0x00032f70     0x2349
+.rodata         0x00032f70     0x2381
                 0x00032f70                        __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.* .data.rel.ro .data.rel.ro.*)
  .rodata        0x00032f70       0xb0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_uart.o
  .rodata.nrf_log_backend_uart_api
                 0x00033020        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_uart.o
                 0x00033020                nrf_log_backend_uart_api
- .rodata        0x0003302c       0xa6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_default_backends.o
- *fill*         0x000330d2        0x2 
+ .rodata        0x0003302c       0xa8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_default_backends.o
  .rodata.m_log_push_ringbuf
                 0x000330d4        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o
  .rodata        0x000330e0       0xa1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o
  *fill*         0x00033181        0x3 
  .rodata        0x00033184       0xaa Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_str_formatter.o
  *fill*         0x0003322e        0x2 
- .rodata        0x00033230       0x8f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
- *fill*         0x000332bf        0x1 
+ .rodata        0x00033230       0x91 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
+ *fill*         0x000332c1        0x3 
  .rodata.m_detection_delay_timer_id
-                0x000332c0        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
- .rodata        0x000332c4       0xb4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_weak.o
- .rodata        0x00033378       0x94 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
+                0x000332c4        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
+ .rodata        0x000332c8       0xb4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_weak.o
+ .rodata        0x0003337c       0x94 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
  .rodata.m_app_timer_sortlist
-                0x0003340c        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
- .rodata        0x00033418       0x88 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_util_platform.o
- .rodata        0x000334a0      0x12c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
- *fill*         0x000335cc        0x4 
+                0x00033410        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
+ .rodata        0x0003341c       0x8a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_util_platform.o
+ *fill*         0x000334a6        0x2 
+ .rodata        0x000334a8      0x130 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
+ *fill*         0x000335d8        0x8 
  .rodata.delay_machine_code.0
-                0x000335d0        0x6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
- *fill*         0x000335d6        0x2 
- .rodata        0x000335d8       0x83 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_balloc.o
- *fill*         0x0003365b        0x1 
- .rodata        0x0003365c       0x79 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf.o
- *fill*         0x000336d5        0x3 
- .rodata        0x000336d8       0x80 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
+                0x000335e0        0x6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
+ *fill*         0x000335e6        0x2 
+ .rodata        0x000335e8       0x85 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_balloc.o
+ *fill*         0x0003366d        0x3 
+ .rodata        0x00033670       0x7b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf.o
+ *fill*         0x000336eb        0x1 
+ .rodata        0x000336ec       0x82 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
+ *fill*         0x0003376e        0x2 
  .rodata._aV2C.0
-                0x00033758       0x10 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
- .rodata        0x00033768       0x83 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_memobj.o
- *fill*         0x000337eb        0x1 
- .rodata        0x000337ec      0x11f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
- *fill*         0x0003390b        0x1 
+                0x00033770       0x10 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
+ .rodata        0x00033780       0x85 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_memobj.o
+ *fill*         0x00033805        0x3 
+ .rodata        0x00033808      0x121 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
+ *fill*         0x00033929        0x3 
  .rodata.pwr_mgmt_data
-                0x0003390c        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
- .rodata        0x00033918       0x81 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
+                0x0003392c        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
+ .rodata        0x00033938       0x83 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
  .rodata.full_queue_indicator.0
-                0x00033999        0x1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
- *fill*         0x0003399a        0x2 
- .rodata        0x0003399c       0x9c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_section_iter.o
- .rodata        0x00033a38       0x93 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sortlist.o
- *fill*         0x00033acb        0x1 
+                0x000339bb        0x1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
+ .rodata        0x000339bc       0x9e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_section_iter.o
+ *fill*         0x00033a5a        0x2 
+ .rodata        0x00033a5c       0x95 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sortlist.o
+ *fill*         0x00033af1        0x3 
  .rodata.m_unknown_str
-                0x00033acc       0x13 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
- *fill*         0x00033adf        0x1 
- .rodata        0x00033ae0      0x3e9 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
- *fill*         0x00033ec9        0x3 
+                0x00033af4       0x13 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
+ *fill*         0x00033b07        0x1 
+ .rodata        0x00033b08      0x3e9 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
+ *fill*         0x00033ef1        0x3 
  .rodata.nrf_strerror_array
-                0x00033ecc      0x128 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
- .rodata        0x00033ff4       0xa5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
- *fill*         0x00034099        0x3 
+                0x00033ef4      0x128 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
+ .rodata        0x0003401c       0xa7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
+ *fill*         0x000340c3        0x1 
  .rodata.m_board_led_list
-                0x0003409c        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
+                0x000340c4        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
  .rodata.m_board_btn_list
-                0x000340a0        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
- .rodata        0x000340a4       0x8a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_clock.o
- *fill*         0x0003412e        0x2 
- .rodata        0x00034130       0x81 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_uart.o
- *fill*         0x000341b1        0x3 
- .rodata        0x000341b4       0xb8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_clock.o
- .rodata        0x0003426c       0xf1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_gpiote.o
- *fill*         0x0003435d        0x3 
- .rodata        0x00034360       0x86 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_prs.o
- *fill*         0x000343e6        0x2 
- .rodata        0x000343e8       0xe7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
- *fill*         0x000344cf        0x1 
+                0x000340c8        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
+ .rodata        0x000340cc       0x8c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_clock.o
+ .rodata        0x00034158       0x83 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_uart.o
+ *fill*         0x000341db        0x1 
+ .rodata        0x000341dc       0xba Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_clock.o
+ *fill*         0x00034296        0x2 
+ .rodata        0x00034298       0xf3 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_gpiote.o
+ *fill*         0x0003438b        0x1 
+ .rodata        0x0003438c       0x88 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_prs.o
+ .rodata        0x00034414       0xe9 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
+ *fill*         0x000344fd        0x3 
  .rodata.irq_handlers.0
-                0x000344d0        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
- .rodata        0x000344d4       0xe8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
+                0x00034500        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
+ .rodata        0x00034504       0xea Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
+ *fill*         0x000345ee        0x2 
  .rodata.irq_handlers.0
-                0x000345bc        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
+                0x000345f0        0x4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
  .rodata.m_ble_gatt_queuereq_queue
-                0x000345c0       0x14 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
+                0x000345f4       0x14 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
  .rodata.m_target_periph_name
-                0x000345d4        0xe Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
- *fill*         0x000345e2        0x2 
- .rodata        0x000345e4      0x138 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
- .rodata        0x0003471c       0x81 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_conn_state.o
- *fill*         0x0003479d        0x3 
- .rodata        0x000347a0      0x116 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_db_discovery.o
- *fill*         0x000348b6        0x2 
- .rodata        0x000348b8      0x157 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gatt.o
- *fill*         0x00034a0f        0x1 
- .rodata        0x00034a10       0x73 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
- *fill*         0x00034a83        0x1 
+                0x00034608        0xe Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
+ *fill*         0x00034616        0x2 
+ .rodata        0x00034618      0x13c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
+ .rodata        0x00034754       0x83 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_conn_state.o
+ *fill*         0x000347d7        0x1 
+ .rodata        0x000347d8      0x116 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_db_discovery.o
+ *fill*         0x000348ee        0x2 
+ .rodata        0x000348f0      0x157 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gatt.o
+ *fill*         0x00034a47        0x1 
+ .rodata        0x00034a48       0x73 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
+ *fill*         0x00034abb        0x1 
  .rodata.m_req_data_alloc
-                0x00034a84       0x18 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
- .rodata        0x00034a9c       0xb8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_scan.o
- .rodata        0x00034b54       0x1c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_lbs_c.o
- .rodata        0x00034b70       0xe4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
+                0x00034abc       0x18 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
+ .rodata        0x00034ad4       0xb8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_scan.o
+ .rodata        0x00034b8c       0x1c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_lbs_c.o
+ .rodata        0x00034ba8       0xe4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
  .rodata.sdh_req_observers
-                0x00034c54        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
+                0x00034c8c        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
  .rodata.sdh_state_observers
-                0x00034c60        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
+                0x00034c98        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
  .rodata.sdh_stack_observers
-                0x00034c6c        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
- .rodata        0x00034c78      0x31d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
- *fill*         0x00034f95        0x3 
+                0x00034ca4        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
+ .rodata        0x00034cb0      0x31f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
+ *fill*         0x00034fcf        0x1 
  .rodata.sdh_ble_observers
-                0x00034f98        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
- .rodata        0x00034fa4       0xe5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
- *fill*         0x00035089        0x3 
+                0x00034fd0        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
+ .rodata        0x00034fdc       0xe7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
+ *fill*         0x000350c3        0x1 
  .rodata.sdh_soc_observers
-                0x0003508c        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
+                0x000350c4        0xc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
  .rodata.libc.__SEGGER_RTL_c_locale
-                0x00035098        0xc /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x00035098                __SEGGER_RTL_c_locale
+                0x000350d0        0xc /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x000350d0                __SEGGER_RTL_c_locale
  .rodata.libc.__SEGGER_RTL_c_locale_day_names
-                0x000350a4       0x3a /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x000350a4                __SEGGER_RTL_c_locale_day_names
+                0x000350dc       0x3a /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x000350dc                __SEGGER_RTL_c_locale_day_names
  .rodata.libc.__SEGGER_RTL_c_locale_month_names
-                0x000350de       0x57 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x000350de                __SEGGER_RTL_c_locale_month_names
+                0x00035116       0x57 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x00035116                __SEGGER_RTL_c_locale_month_names
  .rodata.libc.__SEGGER_RTL_c_locale_am_pm_indicator
-                0x00035135        0x7 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x00035135                __SEGGER_RTL_c_locale_am_pm_indicator
+                0x0003516d        0x7 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x0003516d                __SEGGER_RTL_c_locale_am_pm_indicator
  .rodata.libc.__SEGGER_RTL_c_locale_date_format
-                0x0003513c        0x9 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x0003513c                __SEGGER_RTL_c_locale_date_format
+                0x00035174        0x9 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x00035174                __SEGGER_RTL_c_locale_date_format
  .rodata.libc.__SEGGER_RTL_c_locale_time_format
-                0x00035145        0x9 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x00035145                __SEGGER_RTL_c_locale_time_format
+                0x0003517d        0x9 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x0003517d                __SEGGER_RTL_c_locale_time_format
  .rodata.libc.__SEGGER_RTL_c_locale_date_time_format
-                0x0003514e        0xf /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x0003514e                __SEGGER_RTL_c_locale_date_time_format
+                0x00035186        0xf /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x00035186                __SEGGER_RTL_c_locale_date_time_format
  .rodata.libc..L.str
-                0x0003515d        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
- *fill*         0x0003515f        0x1 
+                0x00035195        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+ *fill*         0x00035197        0x1 
  .rodata.libc.__SEGGER_RTL_codeset_ascii
-                0x00035160       0x20 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x00035160                __SEGGER_RTL_codeset_ascii
+                0x00035198       0x20 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x00035198                __SEGGER_RTL_codeset_ascii
  .rodata.libc.__SEGGER_RTL_c_locale_abbrev_day_names
-                0x00035180       0x1d /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x00035180                __SEGGER_RTL_c_locale_abbrev_day_names
+                0x000351b8       0x1d /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x000351b8                __SEGGER_RTL_c_locale_abbrev_day_names
  .rodata.libc.__SEGGER_RTL_c_locale_abbrev_month_names
-                0x0003519d       0x31 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x0003519d                __SEGGER_RTL_c_locale_abbrev_month_names
+                0x000351d5       0x31 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x000351d5                __SEGGER_RTL_c_locale_abbrev_month_names
  .rodata.libc.__SEGGER_RTL_data_utf8_period
-                0x000351ce        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x000351ce                __SEGGER_RTL_data_utf8_period
+                0x00035206        0x2 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x00035206                __SEGGER_RTL_data_utf8_period
  .rodata.libc.__SEGGER_RTL_data_empty_string
-                0x000351d0        0x1 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x000351d0                __SEGGER_RTL_data_empty_string
- *fill*         0x000351d1        0x3 
+                0x00035208        0x1 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x00035208                __SEGGER_RTL_data_empty_string
+ *fill*         0x00035209        0x3 
  .rodata.libc.__SEGGER_RTL_c_locale_data
-                0x000351d4       0x58 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x000351d4                __SEGGER_RTL_c_locale_data
+                0x0003520c       0x58 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x0003520c                __SEGGER_RTL_c_locale_data
  .rodata.libc.__SEGGER_RTL_ascii_ctype_map
-                0x0003522c       0x80 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x00035264       0x80 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
  .rodata.libc.__SEGGER_RTL_ascii_ctype_mask
-                0x000352ac        0xd /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
-                0x000352b9                        __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
-                0x00002349                        __rodata_size__ = SIZEOF (.rodata)
-                0x000352b9                        __rodata_load_end__ = __rodata_end__
+                0x000352e4        0xd /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
+                0x000352f1                        __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x00002381                        __rodata_size__ = SIZEOF (.rodata)
+                0x000352f1                        __rodata_load_end__ = __rodata_end__
 
-.rel.dyn        0x000352bc        0x0
- .rel.iplt      0x000352bc        0x0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o
+.rel.dyn        0x000352f4        0x0
+ .rel.iplt      0x000352f4        0x0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o
                 0x00000001                        . = ASSERT (((__rodata_start__ == __rodata_end__) || ((__rodata_end__ - __FLASH_segment_start__) <= __FLASH_segment_size__)), error: .rodata is too large to fit in FLASH memory segment)
-                0x000352bc                        __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
+                0x000352f4                        __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
 
-.ARM.exidx      0x000352bc        0x0
-                0x000352bc                        __ARM.exidx_start__ = .
-                0x000352bc                        __exidx_start = __ARM.exidx_start__
+.ARM.exidx      0x000352f4        0x0
+                0x000352f4                        __ARM.exidx_start__ = .
+                0x000352f4                        __exidx_start = __ARM.exidx_start__
  *(.ARM.exidx .ARM.exidx.*)
-                0x000352bc                        __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
+                0x000352f4                        __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
                 0x00000000                        __ARM.exidx_size__ = SIZEOF (.ARM.exidx)
-                0x000352bc                        __exidx_end = __ARM.exidx_end__
-                0x000352bc                        __ARM.exidx_load_end__ = __ARM.exidx_end__
+                0x000352f4                        __exidx_end = __ARM.exidx_end__
+                0x000352f4                        __ARM.exidx_load_end__ = __ARM.exidx_end__
                 0x00000001                        . = ASSERT (((__ARM.exidx_start__ == __ARM.exidx_end__) || ((__ARM.exidx_end__ - __FLASH_segment_start__) <= __FLASH_segment_size__)), error: .ARM.exidx is too large to fit in FLASH memory segment)
-                0x000352bc                        __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
+                0x000352f4                        __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
 
-.fast           0x20001dc8        0x0 load address 0x000352bc
+.fast           0x20001dc8        0x0 load address 0x000352f4
                 0x20001dc8                        __fast_start__ = .
  *(.fast .fast.*)
                 0x20001dc8                        __fast_end__ = (__fast_start__ + SIZEOF (.fast))
                 0x00000000                        __fast_size__ = SIZEOF (.fast)
-                0x000352bc                        __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x000352f4                        __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x00000001                        . = ASSERT (((__fast_load_start__ == __fast_load_end__) || ((__fast_load_end__ - __FLASH_segment_start__) <= __FLASH_segment_size__)), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x20001dc8        0x0
@@ -16922,9 +16933,9 @@ Linker script and memory map
                 0x00000000                        __fast_run_size__ = (__fast_run_end__ - __fast_run_start__)
                 0x20001dc8                        __fast_run_load_end__ = __fast_run_end__
                 0x00000001                        . = ASSERT (((__fast_run_start__ == __fast_run_end__) || ((__fast_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .fast_run is too large to fit in RAM1 memory segment)
-                0x000352bc                        __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
+                0x000352f4                        __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
 
-.data           0x20001dc8      0x668 load address 0x000352bc
+.data           0x20001dc8      0x668 load address 0x000352f4
                 0x20001dc8                        __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data.m_uart   0x20001dc8       0x14 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_uart.o
@@ -16957,7 +16968,7 @@ Linker script and memory map
                 0x2000241c                __SEGGER_RTL_global_locale
                 0x20002430                        __data_end__ = (__data_start__ + SIZEOF (.data))
                 0x00000668                        __data_size__ = SIZEOF (.data)
-                0x00035924                        __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x0003595c                        __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
 
 .igot.plt       0x00000000        0x0
  .igot.plt      0x00000000        0x0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o
@@ -16969,16 +16980,16 @@ Linker script and memory map
                 0x00000668                        __data_run_size__ = (__data_run_end__ - __data_run_start__)
                 0x20002430                        __data_run_load_end__ = __data_run_end__
                 0x00000001                        . = ASSERT (((__data_run_start__ == __data_run_end__) || ((__data_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .data_run is too large to fit in RAM1 memory segment)
-                0x00035924                        __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
+                0x0003595c                        __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
 
-.tdata          0x20002430        0x0 load address 0x00035924
+.tdata          0x20002430        0x0 load address 0x0003595c
                 0x20002430                        __tdata_start__ = .
  *(.tdata .tdata.*)
                 0x20002430                        __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
                 0x00000000                        __tdata_size__ = SIZEOF (.tdata)
-                0x00035924                        __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
-                0x00035924                        __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
-                0x00035924                        __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
+                0x0003595c                        __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
+                0x0003595c                        __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
+                0x0003595c                        __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
                 0x00000001                        . = ASSERT (((__tdata_load_start__ == __tdata_load_end__) || ((__tdata_load_end__ - __FLASH_segment_start__) <= __FLASH_segment_size__)), error: .tdata is too large to fit in FLASH memory segment)
 
 .tdata_run      0x20002430        0x0
@@ -17256,7 +17267,7 @@ LOAD /opt/SEGGER/segger_embedded_studio_8.22a/lib/heapops_disable_interrupts_loc
 LOAD /opt/SEGGER/segger_embedded_studio_8.22a/lib/strops_unaligned_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a
 LOAD /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a
 END GROUP
-OUTPUT(/home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/examples/ble_central/ble_app_blinky_c/pca10056/s140/ses/Output/Debug/Exe/ble_app_blinky_c_pca10056_s140.elf elf32-littlearm)
+OUTPUT(/home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/examples/ble_central/ble_app_blinky_c/pca10056/s140/ses/Output/Debug/Exe/ble_app_blinky_c_pca10056_s140.elf elf32-littlearm)
 LOAD linker stubs
 
 .ARM.attributes
@@ -17427,57 +17438,57 @@ LOAD linker stubs
  .note.GNU-stack
                 0x00000000        0x0 /opt/SEGGER/segger_embedded_studio_8.22a/lib/mbops_timeops_v7em_fpv4_sp_d16_hard_t_le_eabi_balanced.a(mbops.o)
 
-.debug_line     0x00000000    0x2d9d3
+.debug_line     0x00000000    0x2da39
  .debug_line    0x00000000      0x17e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o
- .debug_line    0x0000017e      0xb26 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_serial.o
- .debug_line    0x00000ca4      0xde6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_uart.o
- .debug_line    0x00001a8a      0xab4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_default_backends.o
- .debug_line    0x0000253e     0x14e8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o
- .debug_line    0x00003a26      0xc72 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_str_formatter.o
- .debug_line    0x00004698      0xfed Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
- .debug_line    0x00005685      0x3c0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error.o
- .debug_line    0x00005a45      0x424 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_handler_gcc.o
- .debug_line    0x00005e69      0xba5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_weak.o
- .debug_line    0x00006a0e     0x116c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
- .debug_line    0x00007b7a      0x9d4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_util_platform.o
- .debug_line    0x0000854e     0x12f7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
- .debug_line    0x00009845      0x75b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atfifo.o
- .debug_line    0x00009fa0      0x6cc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atflags.o
- .debug_line    0x0000a66c      0x64a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atomic.o
- .debug_line    0x0000acb6      0xb5e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_balloc.o
- .debug_line    0x0000b814      0x4cf Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf.o
- .debug_line    0x0000bce3      0x7a2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
- .debug_line    0x0000c485      0xbc2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_memobj.o
- .debug_line    0x0000d047     0x1056 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
- .debug_line    0x0000e09d     0x100e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
- .debug_line    0x0000f0ab      0xc94 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
- .debug_line    0x0000fd3f      0x4ea Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_section_iter.o
- .debug_line    0x00010229      0x6a8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sortlist.o
- .debug_line    0x000108d1      0x482 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
- .debug_line    0x00010d53       0xc0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf52840.o
- .debug_line    0x00010e13       0xdf Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf_common.o
- .debug_line    0x00010ef2     0x3703 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/system_nrf52840.o
- .debug_line    0x000145f5      0xeda Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
- .debug_line    0x000154cf     0x117c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_clock.o
- .debug_line    0x0001664b      0xb82 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_uart.o
- .debug_line    0x000171cd     0x10a1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_clock.o
- .debug_line    0x0001826e     0x1e39 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_gpiote.o
- .debug_line    0x0001a0a7      0xc31 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_prs.o
- .debug_line    0x0001acd8     0x1825 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
- .debug_line    0x0001c4fd     0x1806 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
- .debug_line    0x0001dd03     0x10ac Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp.o
- .debug_line    0x0001edaf     0x1461 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp_btn_ble.o
- .debug_line    0x00020210     0x1c06 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
- .debug_line    0x00021e16     0x14b5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advdata.o
- .debug_line    0x000232cb     0x1623 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_conn_state.o
- .debug_line    0x000248ee     0x19b8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_db_discovery.o
- .debug_line    0x000262a6     0x1083 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gatt.o
- .debug_line    0x00027329     0x16d5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
- .debug_line    0x000289fe     0x1261 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_scan.o
- .debug_line    0x00029c5f     0x15b7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_lbs_c.o
- .debug_line    0x0002b216      0xec2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
- .debug_line    0x0002c0d8      0xed2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
- .debug_line    0x0002cfaa      0xa29 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
+ .debug_line    0x0000017e      0xb28 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_serial.o
+ .debug_line    0x00000ca6      0xde8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_uart.o
+ .debug_line    0x00001a8e      0xab6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_default_backends.o
+ .debug_line    0x00002544     0x14ea Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o
+ .debug_line    0x00003a2e      0xc74 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_str_formatter.o
+ .debug_line    0x000046a2      0xfef Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
+ .debug_line    0x00005691      0x3c2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error.o
+ .debug_line    0x00005a53      0x426 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_handler_gcc.o
+ .debug_line    0x00005e79      0xba7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_weak.o
+ .debug_line    0x00006a20     0x116e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
+ .debug_line    0x00007b8e      0x9d6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_util_platform.o
+ .debug_line    0x00008564     0x12f9 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
+ .debug_line    0x0000985d      0x75d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atfifo.o
+ .debug_line    0x00009fba      0x6ce Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atflags.o
+ .debug_line    0x0000a688      0x64c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atomic.o
+ .debug_line    0x0000acd4      0xb60 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_balloc.o
+ .debug_line    0x0000b834      0x4d1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf.o
+ .debug_line    0x0000bd05      0x7a4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
+ .debug_line    0x0000c4a9      0xbc4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_memobj.o
+ .debug_line    0x0000d06d     0x1058 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
+ .debug_line    0x0000e0c5     0x1010 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
+ .debug_line    0x0000f0d5      0xc96 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
+ .debug_line    0x0000fd6b      0x4ec Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_section_iter.o
+ .debug_line    0x00010257      0x6aa Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sortlist.o
+ .debug_line    0x00010901      0x484 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
+ .debug_line    0x00010d85       0xc2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf52840.o
+ .debug_line    0x00010e47       0xe1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf_common.o
+ .debug_line    0x00010f28     0x3705 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/system_nrf52840.o
+ .debug_line    0x0001462d      0xedc Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
+ .debug_line    0x00015509     0x117e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_clock.o
+ .debug_line    0x00016687      0xb84 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_uart.o
+ .debug_line    0x0001720b     0x10a3 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_clock.o
+ .debug_line    0x000182ae     0x1e3b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_gpiote.o
+ .debug_line    0x0001a0e9      0xc33 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_prs.o
+ .debug_line    0x0001ad1c     0x1829 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
+ .debug_line    0x0001c545     0x180a Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
+ .debug_line    0x0001dd4f     0x10ae Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp.o
+ .debug_line    0x0001edfd     0x1463 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp_btn_ble.o
+ .debug_line    0x00020260     0x1c08 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
+ .debug_line    0x00021e68     0x14b7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advdata.o
+ .debug_line    0x0002331f     0x1625 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_conn_state.o
+ .debug_line    0x00024944     0x19ba Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_db_discovery.o
+ .debug_line    0x000262fe     0x1085 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gatt.o
+ .debug_line    0x00027383     0x16d7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
+ .debug_line    0x00028a5a     0x1263 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_scan.o
+ .debug_line    0x00029cbd     0x15b9 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_lbs_c.o
+ .debug_line    0x0002b276      0xec4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
+ .debug_line    0x0002c13a      0xed4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
+ .debug_line    0x0002d00e      0xa2b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
 
 .debug_info     0x00000000    0x6bf3a
  .debug_info    0x00000000       0x22 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o
@@ -17685,58 +17696,58 @@ LOAD linker stubs
  .debug_aranges
                 0x00007290      0x1b0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
 
-.debug_str      0x00000000    0xb7bf7
- .debug_str     0x00000000    0xb7bf7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o
-                                 0xdd (size before relaxing)
- .debug_str     0x000b7bf7    0x90ac6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_serial.o
- .debug_str     0x000b7bf7    0x98bed Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_uart.o
- .debug_str     0x000b7bf7    0x908a4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_default_backends.o
- .debug_str     0x000b7bf7    0x91ec3 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o
- .debug_str     0x000b7bf7    0x90b83 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_str_formatter.o
- .debug_str     0x000b7bf7    0x98b22 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
- .debug_str     0x000b7bf7    0x7a82c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error.o
- .debug_str     0x000b7bf7    0x8b8bb Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_handler_gcc.o
- .debug_str     0x000b7bf7    0x91a73 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_weak.o
- .debug_str     0x000b7bf7    0x987e2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
- .debug_str     0x000b7bf7    0x7c92f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_util_platform.o
- .debug_str     0x000b7bf7    0x98169 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
- .debug_str     0x000b7bf7    0x8e1d4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atfifo.o
- .debug_str     0x000b7bf7    0x8b770 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atflags.o
- .debug_str     0x000b7bf7    0x8baa0 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atomic.o
- .debug_str     0x000b7bf7    0x908c3 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_balloc.o
- .debug_str     0x000b7bf7    0x8b65b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf.o
- .debug_str     0x000b7bf7    0x8bb4c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
- .debug_str     0x000b7bf7    0x8ec18 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_memobj.o
- .debug_str     0x000b7bf7    0x99ac1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
- .debug_str     0x000b7bf7    0x9145d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
- .debug_str     0x000b7bf7    0x8d521 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
- .debug_str     0x000b7bf7    0x8b8c7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_section_iter.o
- .debug_str     0x000b7bf7    0x8dec3 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sortlist.o
- .debug_str     0x000b7bf7    0x8b465 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
- .debug_str     0x000b7bf7      0x122 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf52840.o
- .debug_str     0x000b7bf7      0x124 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf_common.o
- .debug_str     0x000b7bf7    0x7b0eb Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/system_nrf52840.o
- .debug_str     0x000b7bf7    0x95a04 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
- .debug_str     0x000b7bf7    0x98934 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_clock.o
- .debug_str     0x000b7bf7    0x9567d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_uart.o
- .debug_str     0x000b7bf7    0x98075 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_clock.o
- .debug_str     0x000b7bf7    0x99433 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_gpiote.o
- .debug_str     0x000b7bf7    0x977be Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_prs.o
- .debug_str     0x000b7bf7    0x989c1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
- .debug_str     0x000b7bf7    0x98e54 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
- .debug_str     0x000b7bf7    0x97693 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp.o
- .debug_str     0x000b7bf7    0x9ec42 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp_btn_ble.o
- .debug_str     0x000b7bf7    0xa843e Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
- .debug_str     0x000b7bf7    0x9473f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advdata.o
- .debug_str     0x000b7bf7    0x96ade Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_conn_state.o
- .debug_str     0x000b7bf7    0x9d174 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_db_discovery.o
- .debug_str     0x000b7bf7    0x96971 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gatt.o
- .debug_str     0x000b7bf7    0x9b554 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
- .debug_str     0x000b7bf7    0x973e2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_scan.o
- .debug_str     0x000b7bf7    0x9d014 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_lbs_c.o
- .debug_str     0x000b7bf7    0x91490 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
- .debug_str     0x000b7bf7    0x9736b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
- .debug_str     0x000b7bf7    0x8ff97 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
+.debug_str      0x00000000    0xb7c5b
+ .debug_str     0x00000000    0xb7c5b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o
+                                 0xdf (size before relaxing)
+ .debug_str     0x000b7c5b    0x90aca Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_serial.o
+ .debug_str     0x000b7c5b    0x98bf1 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_backend_uart.o
+ .debug_str     0x000b7c5b    0x908a8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_default_backends.o
+ .debug_str     0x000b7c5b    0x91ec7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_frontend.o
+ .debug_str     0x000b7c5b    0x90b87 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_log_str_formatter.o
+ .debug_str     0x000b7c5b    0x98b26 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_button.o
+ .debug_str     0x000b7c5b    0x7a830 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error.o
+ .debug_str     0x000b7c5b    0x8b8bf Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_handler_gcc.o
+ .debug_str     0x000b7c5b    0x91a77 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_error_weak.o
+ .debug_str     0x000b7c5b    0x987e6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_timer2.o
+ .debug_str     0x000b7c5b    0x7c933 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/app_util_platform.o
+ .debug_str     0x000b7c5b    0x9816d Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/drv_rtc.o
+ .debug_str     0x000b7c5b    0x8e1d8 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atfifo.o
+ .debug_str     0x000b7c5b    0x8b774 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atflags.o
+ .debug_str     0x000b7c5b    0x8baa4 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_atomic.o
+ .debug_str     0x000b7c5b    0x908c7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_balloc.o
+ .debug_str     0x000b7c5b    0x8b65f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf.o
+ .debug_str     0x000b7c5b    0x8bb50 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_fprintf_format.o
+ .debug_str     0x000b7c5b    0x8ec1c Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_memobj.o
+ .debug_str     0x000b7c5b    0x99ac5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_pwr_mgmt.o
+ .debug_str     0x000b7c5b    0x91461 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_queue.o
+ .debug_str     0x000b7c5b    0x8d525 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ringbuf.o
+ .debug_str     0x000b7c5b    0x8b8cb Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_section_iter.o
+ .debug_str     0x000b7c5b    0x8dec7 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sortlist.o
+ .debug_str     0x000b7c5b    0x8b469 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_strerror.o
+ .debug_str     0x000b7c5b      0x126 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf52840.o
+ .debug_str     0x000b7c5b      0x128 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ses_startup_nrf_common.o
+ .debug_str     0x000b7c5b    0x7b0ef Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/system_nrf52840.o
+ .debug_str     0x000b7c5b    0x95a08 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/boards.o
+ .debug_str     0x000b7c5b    0x98938 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_clock.o
+ .debug_str     0x000b7c5b    0x95681 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_drv_uart.o
+ .debug_str     0x000b7c5b    0x98079 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_clock.o
+ .debug_str     0x000b7c5b    0x99437 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_gpiote.o
+ .debug_str     0x000b7c5b    0x977c2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_prs.o
+ .debug_str     0x000b7c5b    0x989c5 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uart.o
+ .debug_str     0x000b7c5b    0x98e58 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrfx_uarte.o
+ .debug_str     0x000b7c5b    0x97697 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp.o
+ .debug_str     0x000b7c5b    0x9ec46 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/bsp_btn_ble.o
+ .debug_str     0x000b7c5b    0xa8442 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/main.o
+ .debug_str     0x000b7c5b    0x94743 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_advdata.o
+ .debug_str     0x000b7c5b    0x96ae2 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_conn_state.o
+ .debug_str     0x000b7c5b    0x9d178 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_db_discovery.o
+ .debug_str     0x000b7c5b    0x96975 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gatt.o
+ .debug_str     0x000b7c5b    0x9b558 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_gq.o
+ .debug_str     0x000b7c5b    0x973e6 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_ble_scan.o
+ .debug_str     0x000b7c5b    0x9d018 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/ble_lbs_c.o
+ .debug_str     0x000b7c5b    0x91494 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh.o
+ .debug_str     0x000b7c5b    0x9736f Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_ble.o
+ .debug_str     0x000b7c5b    0x8ff9b Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/nrf_sdh_soc.o
 
 .debug_ranges   0x00000000     0x71c8
  .debug_ranges  0x00000000       0x50 Output/Debug/Obj/ble_app_blinky_c_pca10056_s140/thumb_crt0.o

@@ -1,2 +1,2 @@
 Output/Debug/Obj/IoT_UWB/ses_startup_nrf_common.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/ses_startup_nrf_common.s
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/ses_startup_nrf_common.s

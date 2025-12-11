@@ -28,14 +28,27 @@
  <Project>
   <ProjectSessionItem path="IoT_UWB"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;SEGGER"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Setup"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_00a_reading_dev_id"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_01b_tx_sleep"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_01c_tx_sleep_auto"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_05b_ds_twr_resp"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_05d_ds_twr_resp_sts_sdc"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_06a_ss_twr_initiator"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_06b_ss_twr_responder"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_06e_AES_ss_twr_initiator"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;ex_19_tx_power_adjustment"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;examples;examples_info"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;platform"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;SDK"/>
   <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;SDK;nRF_Drivers"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;SDK;nRF_SoftDevice"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;Shared"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;Source;Shared;dw3720"/>
+  <ProjectSessionItem path="IoT_UWB;IoT_UWB;System"/>
  </Project>
  <Register1>
   <RegisterWindow invisibleNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="dw3000_api_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -72,16 +85,16 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="29" y="85" useTextEdit="1" path="Source/main.c" left="0" selected="1" top="72" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="88" useTextEdit="1" path="Source/main.c" left="0" selected="1" top="88" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="23" useTextEdit="1" path="../../Src/examples/ex_01a_simple_tx/simple_tx.c" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../Src/config_options.c" left="0" top="111" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="15" useTextEdit="1" path="../../Src/examples/examples_info/example_info.c" left="0" top="15" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="17" useTextEdit="1" path="../../Src/examples/examples_info/example_info.c" left="0" top="17" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="2" y="61" useTextEdit="1" path="../../Src/example_selection.h" left="0" top="38" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="108" y="137" useTextEdit="1" path="../../Src/examples/ex_01h_simple_tx_pdoa/simple_tx_pdoa.c" left="0" top="111" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="108" y="137" useTextEdit="1" path="../../Src/examples/ex_01h_simple_tx_pdoa/simple_tx_pdoa.c" left="0" top="106" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="137" useTextEdit="1" path="../../Src/examples/ex_06e_AES_ss_twr_initiator/ss_aes_twr_initiator.c" left="0" top="114" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../Src/examples/ex_06a_ss_twr_initiator/ss_twr_initiator_sts.c" left="0" top="244" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="22" y="96" useTextEdit="1" path="sdk/modules/nrfx/mdk/ses_startup_nrf_common.s" left="0" top="84" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="62" y="531" useTextEdit="1" path="../../Src/examples/ex_06b_ss_twr_responder/ss_twr_responder_sts.c" left="0" top="508" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="89" useTextEdit="1" path="../../Src/examples/ex_06b_ss_twr_responder/ss_twr_responder_sts.c" left="0" top="406" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="34" useTextEdit="1" path="../../Src/examples/ex_05b_ds_twr_resp/ds_twr_responder_sts.c" left="0" top="18" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="10005" useTextEdit="1" path="../../Shared/dwt_uwb_driver/dw3720/dw3720_device.c" left="0" top="9990" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="2" y="290" useTextEdit="1" path="sdk/modules/nrfx/drivers/nrfx_common.h" left="0" top="277" codecName="Default"/>
@@ -89,6 +102,24 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="5" y="111" useTextEdit="1" path="../../Src/MAC_802_15_4/mac_802_15_4.c" left="0" top="102" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="49" y="501" useTextEdit="1" path="sdk/modules/nrfx/drivers/src/nrfx_spim.c" left="0" top="482" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="89" y="299" useTextEdit="1" path="../../Src/examples/ex_05d_ds_twr_resp_sts_sdc/ds_twr_sts_sdc_responder.c" left="0" top="287" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="27" y="113" useTextEdit="1" path="../../../../../../../../LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/main.c" left="0" top="85" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="540" useTextEdit="1" path="../../../../../../../../LOC-PAISA/IoT_uwb/Drivers/API/Shared/dwt_uwb_driver/dw3720/dw3720_device.c" left="0" top="517" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="71" useTextEdit="1" path="../../../../../../../../LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/modules/nrfx/mdk/ses_startup_nrf52840.s" left="0" top="49" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="392" useTextEdit="1" path="../../../../../../../../LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/platform/deca_spi.c" left="0" top="362" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="137" useTextEdit="1" path="../../Src/examples/ex_01b_tx_sleep/tx_sleep.c" left="0" top="108" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../Src/examples/ex_01b_tx_sleep/tx_sleep_idleRC.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="19" useTextEdit="1" path="../../Src/examples/ex_01c_tx_sleep_auto/tx_sleep_auto.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="9" y="145" useTextEdit="1" path="../../Src/examples/ex_19_tx_power_adjustment/tx_power_adjustment_example.c" left="0" top="121" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="625" useTextEdit="1" path="../../Shared/dwt_uwb_driver/deca_device_api.h" left="0" top="601" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="665" useTextEdit="1" path="sdk/modules/nrfx/hal/nrf_gpio.h" left="0" top="643" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="31" y="32" useTextEdit="1" path="Source/platform/deca_spi.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="Source/config/sdk_config.h" left="0" top="24" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="198" useTextEdit="1" path="Source/platform/port.h" left="0" top="154" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="16" useTextEdit="1" path="../../Src/examples/ex_00a_reading_dev_id/read_dev_id.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="sdk/components/drivers_nrf/nrf_soc_nosd/nrf_error.h" left="0" top="24" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="40" y="219" useTextEdit="1" path="sdk/components/libraries/util/app_util.h" left="0" top="195" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="88" useTextEdit="1" path="sdk/components/softdevice/common/nrf_sdh.c" left="0" top="64" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="58" useTextEdit="1" path="sdk/modules/nrfx/mdk/ses_startup_nrf52840.s" left="0" top="45" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="IoT_UWB" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/ble/common" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <EMStudioWindow activeProject="IoT_UWB" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/pavel/apps/LOC-PAISA/DW3_QM33_SDK_1.0.2/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/ble/common" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

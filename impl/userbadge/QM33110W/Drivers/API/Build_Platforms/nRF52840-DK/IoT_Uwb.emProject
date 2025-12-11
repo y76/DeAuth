@@ -5,8 +5,10 @@
     Name="Debug"
     c_preprocessor_definitions="DEBUG"
     cpp_enable_rtti="Yes"
+    debug_additional_load_file="$(ProjectDir)/sdk/components/softdevice/s140/hex/s140_nrf52_7.2.0_softdevice.hex"
     gcc_debugging_level="Level 3"
-    gcc_optimization_level="None" />
+    gcc_optimization_level="None"
+    target_loader_erase_all="Yes" />
   <configuration
     Name="Release"
     c_preprocessor_definitions="NDEBUG"
@@ -32,8 +34,9 @@
       build_quietly="No"
       build_treat_warnings_as_errors="Yes"
       c_additional_options=""
-      c_preprocessor_definitions="BOARD_PCA10056 ;CONFIG_GPIO_AS_PINRESET;FLOAT_ABI_HARD;INITIALIZE_USER_SECTIONS;NO_VTOR_CONFIG;NRF52840_XXAA;DEBUG"
-      c_user_include_directories="$(ProjectDir)/Source/config;$(ProjectDir)/Source/platform;$(NordicSDKDir)/components/drivers_nrf/nrf_soc_nosd;$(NordicSDKDir)/components/boards;$(NordicSDKDir)/components/toolchain/cmsis/include;$(NordicSDKDir)/components/libraries/balloc;$(NordicSDKDir)/components/libraries/ringbuf;$(NordicSDKDir)/components/libraries/log;$(NordicSDKDir)/components/libraries/log/src;$(NordicSDKDir)/components/libraries/memobj;$(NordicSDKDir)/components/libraries/util;$(NordicSDKDir)/components/libraries/atomic;$(NordicSDKDir)/components/libraries/delay;$(NordicSDKDir)/components/libraries/experimental_section_vars;$(NordicSDKDir)/components/libraries/strerror;$(NordicSDKDir)/modules/nrfx;$(NordicSDKDir)/modules/nrfx/hal;$(NordicSDKDir)/modules/nrfx/mdk;$(NordicSDKDir)/modules/nrfx/drivers/include;$(NordicSDKDir)/integration/nrfx;$(NordicSDKDir)/integration/nrfx/legacy;$(NordicSDKDir)/external/fprintf;$(DW3000APIDir)/Src;$(DW3000APIDir)/Src/examples/examples_info;$(DW3000APIDir)/Src/examples/shared_data;$(DW3000APIDir)/Src/MAC_802_15_4;$(DW3000APIDir)/Src/MAC_802_15_8;$(DW3000APIDir)/Shared/dwt_uwb_driver;$(DW3000APIDir)/Shared/dwt_uwb_driver/dw3000;$(DW3000APIDir)/Shared/dwt_uwb_driver/lib/qmath/include;$(DW3000APIDir)/Shared/dwt_uwb_driver/lib/qmath/src"
+      c_preprocessor_definitions="BOARD_PCA10056;CONFIG_GPIO_AS_PINRESET;FLOAT_ABI_HARD;INITIALIZE_USER_SECTIONS;NO_VTOR_CONFIG;NRF52840_XXAA;NRF_SD_BLE_API_VERSION=7;S140;SOFTDEVICE_PRESENT;NRF_SDH_ENABLED=1;NRF_SDH_SOC_ENABLED=1;NRF_SDH_BLE_ENABLED=1;DEBUG"
+      c_user_include_directories="$(ProjectDir)/Source/config;$(ProjectDir)/Source/platform;$(NordicSDKDir)/components/boards;$(NordicSDKDir)/components/toolchain/cmsis/include;$(NordicSDKDir)/components/libraries/balloc;$(NordicSDKDir)/components/libraries/ringbuf;$(NordicSDKDir)/components/libraries/log;$(NordicSDKDir)/components/libraries/log/src;$(NordicSDKDir)/components/libraries/memobj;$(NordicSDKDir)/components/libraries/util;$(NordicSDKDir)/components/libraries/atomic;$(NordicSDKDir)/components/libraries/delay;$(NordicSDKDir)/components/libraries/experimental_section_vars;$(NordicSDKDir)/components/libraries/strerror;$(NordicSDKDir)/modules/nrfx;$(NordicSDKDir)/modules/nrfx/hal;$(NordicSDKDir)/modules/nrfx/mdk;$(NordicSDKDir)/modules/nrfx/drivers/include;$(NordicSDKDir)/integration/nrfx;$(NordicSDKDir)/integration/nrfx/legacy;$(NordicSDKDir)/external/fprintf;$(DW3000APIDir)/Src;$(DW3000APIDir)/Src/examples/examples_info;$(DW3000APIDir)/Src/examples/shared_data;$(DW3000APIDir)/Src/MAC_802_15_4;$(DW3000APIDir)/Src/MAC_802_15_8;$(DW3000APIDir)/Shared/dwt_uwb_driver;$(DW3000APIDir)/Shared/dwt_uwb_driver/dw3000;$(DW3000APIDir)/Shared/dwt_uwb_driver/lib/qmath/include;$(DW3000APIDir)/Shared/dwt_uwb_driver/lib/qmath/src;$(NordicSDKDir)/components/softdevice/common;$(NordicSDKDir)/components/softdevice/s140/headers;$(NordicSDKDir)/components/softdevice/s140/headers/nrf52"
+      debug_additional_load_file="$(NordicSDKDir)/components/softdevice/s140/hex/s140_nrf52_7.2.0_softdevice.hex"
       debug_register_definition_file="$(NordicSDKDir)/modules/nrfx/mdk/nrf52840.svd"
       debug_target_connection="J-Link"
       gcc_all_warnings_command_line_options=""
@@ -50,7 +53,7 @@
       linker_printf_width_precision_supported="Yes"
       linker_scanf_fmt_level="long"
       linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
-      linker_section_placement_macros="FLASH_PH_START=0x0 ;FLASH_PH_SIZE=0x100000;RAM_PH_START=0x20000000;RAM_PH_SIZE=0x40000;FLASH_START=0x0;FLASH_SIZE=0x100000;FCONFIG_START=0x10000;FCONFIG_SIZE=0x400;DEFAULT_CONFIG_START=0x10500;DEFAULT_CONFIG_SIZE=0x400;INIT_START=0x12000;RAM_START=0x20000000;RAM_SIZE=0x40000"
+      linker_section_placement_macros="FLASH_PH_START=0x27000;FLASH_PH_SIZE=0xD9000;RAM_PH_START=0x20002080;RAM_PH_SIZE=0x3DF80;FLASH_START=0x27000;FLASH_SIZE=0xD9000;FCONFIG_START=0x30000;FCONFIG_SIZE=0x400;DEFAULT_CONFIG_START=0x30500;DEFAULT_CONFIG_SIZE=0x400;INIT_START=0x32000;RAM_START=0x20002080;RAM_SIZE=0x3DF80"
       linker_section_placements_segments="FLASH RX 0x0 0x100000;RAM1 RWX 0x20000000 0x40000"
       macros="NordicSDKDir=sdk;DW3000APIDir=../..;CMSIS_CONFIG_TOOL=$(NordicSDKDir)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard"
       project_can_build_in_parallel="Yes"
@@ -274,7 +277,13 @@
           <file file_name="$(NordicSDKDir)/components/libraries/balloc/nrf_balloc.c" />
           <file file_name="$(NordicSDKDir)/components/libraries/log/src/nrf_log_frontend.c" />
           <file file_name="$(NordicSDKDir)/components/libraries/memobj/nrf_memobj.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/experimental_section_vars/nrf_section_iter.c" />
           <file file_name="$(NordicSDKDir)/components/libraries/strerror/nrf_strerror.c" />
+        </folder>
+        <folder Name="nRF_SoftDevice">
+          <file file_name="$(NordicSDKDir)/components/softdevice/common/nrf_sdh.c" />
+          <file file_name="$(NordicSDKDir)/components/softdevice/common/nrf_sdh_ble.c" />
+          <file file_name="$(NordicSDKDir)/components/softdevice/common/nrf_sdh_soc.c" />
         </folder>
       </folder>
       <folder Name="Shared">

@@ -1,5 +1,5 @@
 Output/Debug/Obj/IoT_UWB/dw3000_device.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_device.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_device.c \
  ../../Shared/dwt_uwb_driver/deca_device_api.h \
  ../../Shared/dwt_uwb_driver/deca_types.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stddef.h \
@@ -12,8 +12,8 @@ Output/Debug/Obj/IoT_UWB/dw3000_device.o: \
  ../../Shared/dwt_uwb_driver/deca_interface.h \
  ../../Shared/dwt_uwb_driver/deca_device_api.h \
  ../../Shared/dwt_uwb_driver/deca_types.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_deca_regs.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_deca_vals.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_deca_regs.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Shared/dwt_uwb_driver/dw3000/dw3000_deca_vals.h \
  ../../Shared/dwt_uwb_driver/deca_version.h \
  ../../Shared/dwt_uwb_driver/deca_rsl.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/assert.h \

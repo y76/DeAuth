@@ -1,6 +1,6 @@
 Output/Debug/Obj/IoT_UWB/app_error_weak.o: \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error_weak.c \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error_weak.c \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stdint.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/__SEGGER_RTL_ConfDefaults.h \
@@ -19,37 +19,43 @@ Output/Debug/Obj/IoT_UWB/app_error_weak.o: \
  sdk/modules/nrfx/mdk/nrf51_to_nrf52840.h \
  sdk/modules/nrfx/mdk/nrf52_to_nrf52840.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/sdk_errors.h \
- sdk/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/nordic_common.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error_weak.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/sdk_errors.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/nordic_common.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_error_weak.h \
  sdk/components/libraries/log/nrf_log.h \
  sdk/components/libraries/util/sdk_common.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/string.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/Source/config/sdk_config.h \
  sdk/components/libraries/util/nordic_common.h \
  sdk/modules/nrfx/mdk/compiler_abstraction.h \
  sdk/components/libraries/util/sdk_os.h \
  sdk/components/libraries/util/sdk_errors.h \
  sdk/components/libraries/util/app_util.h \
  /opt/SEGGER/segger_embedded_studio_8.22a/include/stddef.h \
+ sdk/components/softdevice/s140/headers/nrf52/nrf_mbr.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
  sdk/components/libraries/util/sdk_macros.h \
  sdk/components/libraries/util/nrf_assert.h \
  sdk/components/libraries/experimental_section_vars/nrf_section.h \
  sdk/components/libraries/util/nordic_common.h \
- sdk/components/libraries/strerror/nrf_strerror.h \
- sdk/components/libraries/util/sdk_errors.h \
  sdk/components/libraries/log/src/nrf_log_internal.h \
  sdk/components/libraries/util/app_util.h \
  sdk/components/libraries/log/nrf_log_instance.h \
  sdk/components/libraries/log/nrf_log_types.h \
  sdk/components/libraries/log/nrf_log_types.h \
  sdk/components/libraries/log/nrf_log_ctrl.h \
+ sdk/components/libraries/util/sdk_errors.h \
  sdk/components/libraries/log/src/nrf_log_ctrl_internal.h \
  sdk/components/libraries/log/nrf_log_backend_interface.h \
- sdk/components/libraries/memobj/nrf_memobj.h \
- /opt/SEGGER/segger_embedded_studio_8.22a/include/stdlib.h \
- sdk/components/libraries/balloc/nrf_balloc.h \
- sdk/components/libraries/util/app_util_platform.h \
- sdk/components/libraries/util/app_error.h \
- /home/pavel/apps/LOC-PAISA/IoT_uwb/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_util_platform.h
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/app_util_platform.h \
+ sdk/components/softdevice/s140/headers/nrf_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_svc.h \
+ sdk/components/softdevice/s140/headers/nrf_error.h \
+ sdk/components/softdevice/s140/headers/nrf_error_soc.h \
+ sdk/components/softdevice/s140/headers/nrf_nvic.h \
+ /home/pavel/apps/DeAuth/impl/userbadge/QM33110W/Drivers/API/Build_Platforms/nRF52840-DK/sdk/components/libraries/util/nrf_assert.h \
+ sdk/components/libraries/strerror/nrf_strerror.h \
+ sdk/components/softdevice/s140/headers/nrf_sdm.h \
+ sdk/components/softdevice/s140/headers/nrf_error_sdm.h \
+ sdk/components/softdevice/s140/headers/nrf_soc.h
