@@ -10,13 +10,13 @@ functions:
   // Derive the key from uwb configuration parameters
   get_uwb_key/1
 
-// Provision UB asd WS
+// Provision UT asd WS
 // For correctness, it these should be modeld independently,
 // but since we only want to verify the messages after provisioning, this is enough.
 rule Provision:
     let
       // this does not model a certificate correctly,
-      // but by provisioning the DA signing public key to UB
+      // but by provisioning the DA signing public key to UT
       // we can model the link between the WS signing key and DA signing key.
       //
       // The certificate for the DA is modeld is a public key.
@@ -32,8 +32,8 @@ rule Provision:
     , Fr(~attestation_result)
     ]
   -->
-    [ WS_Initial($UB, $WS, ub_enc_pub, ~ws_sign_ltk, ~attestation_result, certws)
-    , UB_Initial($UB, ~ub_enc_ltk, certda, ~attestation_result)
+    [ WS_Initial($UT, $WS, ub_enc_pub, ~ws_sign_ltk, ~attestation_result, certws)
+    , UT_Initial($UT, ~ub_enc_ltk, certda, ~attestation_result)
     ]  
 
 
@@ -43,10 +43,10 @@ rule WS_Start_Session[role="WS"]:
         shared_secret = ub_pub^~ws_enc_ephem
         ws_enc_pub = 'g'^~ws_enc_ephem
         enc_init = senc(~uwb_params, shared_secret)
-        msg_init   = <~timestamp, ~challenge, $WS, $UB, ~policy, ws_enc_pub, enc_init>
+        msg_init   = <~timestamp, ~challenge, $WS, $UT, ~policy, ws_enc_pub, enc_init>
         sig_init = sign(h(msg_init), sign_ltk)
     in
-    [ WS_Initial($UB, $WS, ub_pub, sign_ltk, result, certws)
+    [ WS_Initial($UT, $WS, ub_pub, sign_ltk, result, certws)
     , Fr(~ws_enc_ephem)
     , Fr(~uwb_params) // this is an opaque blob that contains any data needed to initiate the uwb connection
     , Fr(~policy)
@@ -54,10 +54,10 @@ rule WS_Start_Session[role="WS"]:
     , Fr(~timestamp)
     , Fr(~challenge)
     ]
-  --[ WS_Encrypt_Session($WS, $UB, ~uwb_params)
+  --[ WS_Encrypt_Session($WS, $UT, ~uwb_params)
     , Send_Session_Secret(~uwb_params)
     ]->
-    [ !WS_Start_Session($WS, $UB, ~uwb_params, h(msg_init), result, shared_secret, ~challenge)
+    [ !WS_Start_Session($WS, $UT, ~uwb_params, h(msg_init), result, shared_secret, ~challenge)
     , Out(<msg_init, sig_init, certws>)
     ] 
 
@@ -66,7 +66,7 @@ rule WS_Check_Attestation[role="WS"]:
       uwb_key = get_uwb_key(uwb_params)
       fr_poll = sdec(fr_poll_enc, uwb_key)
     in
-    [ !WS_Start_Session($WS, $UB, uwb_params, msg_hash, result, shared_secret, challenge)
+    [ !WS_Start_Session($WS, $UT, uwb_params, msg_hash, result, shared_secret, challenge)
     , In(fr_poll_enc)
 	]
   --[ _restrict( <'header', msg_hash, h(result), challenge> = fr_poll )
@@ -74,8 +74,8 @@ rule WS_Check_Attestation[role="WS"]:
     ]-> []
 
 // Check sign
-rule UB_Start_Session[role="UB"]:
-    [ UB_Initial(UB, ub_ltk, certda, result)
+rule UT_Start_Session[role="UT"]:
+    [ UT_Initial(UT, ub_ltk, certda, result)
     , In(<msg_init, sig_init, <sign_pub, da_sign>>)
 	]
   --[ // verify the contents of the message
@@ -85,9 +85,9 @@ rule UB_Start_Session[role="UB"]:
       // Additional verifications are done in this stage
       // e.g. timestamp freshness, policy checks, device id checks ...
     ]-> 
-    [ UB_Start_Session(UB, ub_ltk, msg_init, h(msg_init), result)]
+    [ UT_Start_Session(UT, ub_ltk, msg_init, h(msg_init), result)]
 
-rule UB_Decrypt_Session[role="UB"]:
+rule UT_Decrypt_Session[role="UT"]:
     let
         shared_secret = ws_enc_pub^ub_ltk
         uwb_params = sdec(enc_init, shared_secret)
@@ -96,8 +96,8 @@ rule UB_Decrypt_Session[role="UB"]:
         fr_poll    = <'header', hash, att, challenge>
         fr_poll_enc    = senc(fr_poll, uwb_key)
     in
-    [ UB_Start_Session(ub, ub_ltk, <timestamp, challenge, ws, ub, policy, ws_enc_pub, enc_init>, hash, result) ]
-  --[ UB_Decrypt_message(ws, ub, uwb_key)
+    [ UT_Start_Session(ut, ub_ltk, <timestamp, challenge, ws, ut, policy, ws_enc_pub, enc_init>, hash, result) ]
+  --[ UT_Decrypt_message(ws, ut, uwb_key)
     , Receive_Session_Secret(uwb_params)
     , Send_Attestation(fr_poll)
     ]->
