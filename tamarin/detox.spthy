@@ -1,119 +1,127 @@
-theory detox_auth
+theory deauth
 begin
 
-builtins: diffie-hellman, symmetric-encryption, signing, hashing
+builtins: asymmetric-encryption, symmetric-encryption, signing, hashing, diffie-hellman
 
 equations:
   sdec(senc(m, k), k) = m
 
-// Register the UB key pair
-rule Register_Enc_Ltk:
-    [ Fr(~ltk) ]
-  -->
-    [ !Ltk($dev, ~ltk)
-    , !Pk($dev, 'g'^~ltk)
-    , Out('g'^~ltk)
-    ]
+functions:
+  // Derive the key from uwb configuration parameters
+  get_uwb_key/1
 
-rule Register_Sign_Ltk:
-    [ Fr(~ltk) ]
-  -->
-    [ !SignLtk($dev, ~ltk)
-    , !SignPk($dev, pk(~ltk))
-    , Out(pk(~ltk))
-    ]
+// Provision UB asd WS
+// For correctness, it these should be modeld independently,
+// but since we only want to verify the messages after provisioning, this is enough.
+rule Provision:
+    let
+      // this does not model a certificate correctly,
+      // but by provisioning the DA signing public key to UB
+      // we can model the link between the WS signing key and DA signing key.
+      //
+      // The certificate for the DA is modeld is a public key.
+      // The certificate for the WS is modeld as a signature over the WS public key by the DA signing key.
+      certda = pk(~da_sign_ltk)
+      certws = <pk(~ws_sign_ltk), sign(h(pk(~ws_sign_ltk)), ~da_sign_ltk)>
 
-rule Register_Attestation_Result:
-    [ Fr(~result) ]
-  -->
-    [ !AttResult($dev, ~result) ]
-
-// Provision
-rule WS_Initial[role="WS"]:
-    [ !Pk($UB, ub_pub)
-    , !SignLtk($WS, sign_ltk)
-    , !AttResult($UB, result)
+      ub_enc_pub = 'g'^~ub_enc_ltk
+    in
+    [ Fr(~da_sign_ltk)
+    , Fr(~ws_sign_ltk)
+    , Fr(~ub_enc_ltk)
+    , Fr(~attestation_result)
     ]
   -->
-    [ WS_Initial($UB, $WS, ub_pub, sign_ltk, result) ]
+    [ WS_Initial($UB, $WS, ub_enc_pub, ~ws_sign_ltk, ~attestation_result, certws)
+    , UB_Initial($UB, ~ub_enc_ltk, certda, ~attestation_result)
+    ]  
 
-rule UB_Initial[role="UB"]:
-    [ !Ltk($UB, ~ltk_ub)
-    , !SignPk($WS, sign_pub)
-    , !AttResult($UB, result) ]
-  -->
-    [ UB_Initial($UB, ~ltk_ub, sign_pub, result) ]
 
 // WS Start session
 rule WS_Start_Session[role="WS"]:
-    let ws_pub = 'g'^~ws_ephem
-        ss = ub_pub^~ws_ephem
-        message = <senc(<~sts_session_secret, ~challenge>,ss), ws_pub>
-        signature = sign(message, sign_ltk)
+    let 
+        shared_secret = ub_pub^~ws_enc_ephem
+        ws_enc_pub = 'g'^~ws_enc_ephem
+        enc_init = senc(~uwb_params, shared_secret)
+        msg_init   = <~timestamp, ~challenge, $WS, $UB, ~policy, ws_enc_pub, enc_init>
+        sig_init = sign(h(msg_init), sign_ltk)
     in
-    [ WS_Initial($UB, $WS, ub_pub, sign_ltk, result)
-    , Fr(~sts_session_secret) // this is an opaque blob that contains any data needed to initia te the uwb connection
-    , Fr(~ws_ephem)
+    [ WS_Initial($UB, $WS, ub_pub, sign_ltk, result, certws)
+    , Fr(~ws_enc_ephem)
+    , Fr(~uwb_params) // this is an opaque blob that contains any data needed to initiate the uwb connection
+    , Fr(~policy)
+    // not actual values but this will act as a nonce
+    , Fr(~timestamp)
     , Fr(~challenge)
     ]
-  --[ WS_Encrypt_Session($WS, $UB, ~sts_session_secret),
-      Send_Session_Secret(~sts_session_secret)
+  --[ WS_Encrypt_Session($WS, $UB, ~uwb_params)
+    , Send_Session_Secret(~uwb_params)
     ]->
-    [ !WS_Start_Session($WS, $UB, ss, ~challenge, result)
-    , Out(<message, signature>)
+    [ !WS_Start_Session($WS, $UB, ~uwb_params, h(msg_init), result, shared_secret, ~challenge)
+    , Out(<msg_init, sig_init, certws>)
     ] 
 
 rule WS_Check_Attestation[role="WS"]:
-    let att = sdec(attestation_result, shared_secret)
+    let
+      uwb_key = get_uwb_key(uwb_params)
+      fr_poll = sdec(fr_poll_enc, uwb_key)
     in
-    [ !WS_Start_Session($WS, $UB, shared_secret, challenge, result)
-    , In(attestation_result)]
-  --[ _restrict( h(<result,challenge>) = att )
-    , Receieve_Attestation(att)
+    [ !WS_Start_Session($WS, $UB, uwb_params, msg_hash, result, shared_secret, challenge)
+    , In(fr_poll_enc)
+	]
+  --[ _restrict( <'header', msg_hash, h(result), challenge> = fr_poll )
+    , Receieve_Attestation(fr_poll)
     ]-> []
 
 // Check sign
 rule UB_Start_Session[role="UB"]:
-    [ UB_Initial(UB, ub_ltk, sign_pub, result)
-    , In(<message, signature>) ]
-  --[ _restrict(verify(signature, message, sign_pub) = true) ]-> 
-    [ UB_Start_Session(UB, ub_ltk, message, result)]
+    [ UB_Initial(UB, ub_ltk, certda, result)
+    , In(<msg_init, sig_init, <sign_pub, da_sign>>)
+	]
+  --[ // verify the contents of the message
+      _restrict(verify(sig_init, h(msg_init), sign_pub) = true)
+      // verify the public key against the certificate
+    , _restrict(verify(da_sign, h(sign_pub), certda) = true)
+      // Additional verifications are done in this stage
+      // e.g. timestamp freshness, policy checks, device id checks ...
+    ]-> 
+    [ UB_Start_Session(UB, ub_ltk, msg_init, h(msg_init), result)]
 
 rule UB_Decrypt_Session[role="UB"]:
-    let ss = ws_pub^ub_ltk
-        msg = sdec(encrypted, ss)
-        sess_sec = fst(msg)
-        challenge = snd(msg)
-        att = h(<result,challenge>)
-        att_msg = senc(att,ss)
+    let
+        shared_secret = ws_enc_pub^ub_ltk
+        uwb_params = sdec(enc_init, shared_secret)
+        uwb_key    = get_uwb_key(uwb_params)
+        att        = h(result)
+        fr_poll    = <'header', hash, att, challenge>
+        fr_poll_enc    = senc(fr_poll, uwb_key)
     in
-    [ UB_Start_Session(UB, ub_ltk, <encrypted, ws_pub>, result) ]
-  --[ UB_Decrypt_message($WS, UB, sess_sec)
-    , Receive_Session_Secret(sess_sec)
-    , Send_Attestation(att)
-    ]-> 
-    [ Out(att_msg) ]
+    [ UB_Start_Session(ub, ub_ltk, <timestamp, challenge, ws, ub, policy, ws_enc_pub, enc_init>, hash, result) ]
+  --[ UB_Decrypt_message(ws, ub, uwb_key)
+    , Receive_Session_Secret(uwb_params)
+    , Send_Attestation(fr_poll)
+    ]->
+    [ Out(fr_poll_enc) ]
+
 
 // There exists a trace that executes the full protocol
 lemma exist_path:
-  exists-trace
-    "Ex #i att.
-      Receieve_Attestation(att) @i"
+    exists-trace "Ex #i att. Receieve_Attestation(att) @i"
 
 // The session secret remains secret throughout the protocol run
 lemma sts_session_secrecy:
-    "All #i secret. Receive_Session_Secret(secret) @i
-      ==> not Ex #j. K(secret)@j"
+    "All #i uwb_params. Receive_Session_Secret(uwb_params) @i
+      ==> not Ex #j. K(uwb_params)@j"
 
 // authentication
 lemma sts_session_authentication:
     "All #i secret. Receive_Session_Secret(secret) @i
-      ==> Ex #j secret2. Send_Session_Secret(secret2) @j & j<i"
+      ==> Ex #j secret. Send_Session_Secret(secret) @j & j<i"
 
 // The session secret remains secret throughout the protocol run
 lemma attestation_result_secrecy:
-    "All #i result challenge. Receieve_Attestation(h(<result,challenge>)) @i
-      ==> not Ex #j. K(result)@j"
+    "All #i hash att challenge. Receieve_Attestation(h(<'header', hash, att, challenge>)) @i
+      ==> not Ex #j. K(att)@j"
 
 lemma attestation_result_authentication:
     "All #i att. Receieve_Attestation(att)@i
